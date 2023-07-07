@@ -9,7 +9,7 @@ M.override = {
 	Comment = {
 		italic = true,
 	},
-	Keyword = {
+	["@keyword"] = {
 		bold = true,
 	},
 }
