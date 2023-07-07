@@ -12,6 +12,14 @@ M.override = {
 	["@keyword"] = {
 		bold = true,
 	},
+	NvDashAscii = {
+		bg = "none",
+		fg = "purple",
+	},
+
+	NvDashButtons = {
+		bg = "none",
+	},
 }
 
 ---@type HLTable
