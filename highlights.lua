@@ -12,11 +12,24 @@ M.override = {
 	["@keyword"] = {
 		bold = true,
 	},
+	["@string"] = {
+		italic = true,
+	},
+	["@string.regex"] = {
+		italic = true,
+		bold = true,
+	},
+	["@string.escape"] = {
+		italic = true,
+	},
+	["@string.special"] = {
+		italic = true,
+		underline = true,
+	},
 	NvDashAscii = {
 		bg = "none",
 		fg = "purple",
 	},
-
 	NvDashButtons = {
 		bg = "none",
 	},
