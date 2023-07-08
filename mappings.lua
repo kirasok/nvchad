@@ -260,4 +260,18 @@ M.zk = {
 
 require("core.utils").load_mappings("zk")
 
+M.vimtablemode = {
+	plugin = true,
+
+	v = {
+		["<leader>tt"] = { "" },
+		["<leader>T"] = { "" },
+	},
+
+	n = {
+		["<leader>tm"] = { "" },
+		["<leader>tt"] = { "" },
+	},
+}
+
 return M
