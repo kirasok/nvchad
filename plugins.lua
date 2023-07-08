@@ -329,7 +329,6 @@ local plugins = {
 		init = function()
 			require("core.utils").load_mappings("vimtablemode")
 		end,
-		event = "VeryLazy",
 		ft = { "markdown" },
 		config = function()
 			vim.g.table_mode_corner = "|"
