@@ -286,4 +286,59 @@ M.vimtablemode = {
 	},
 }
 
+M.octo = {
+	plugin = true,
+
+	n = {
+		-- issue
+		["<leader>giC"] = { "<CMD>Octo issue close<CR>", "close" },
+		["<leader>giR"] = { "<CMD>Octo issue reopen<CR>", "reopen" },
+		["<leader>gic"] = { "<CMD>Octo issue create<CR>", "create" },
+		["<leader>gie"] = { "<CMD>Octo issue edit<CR>", "edit" },
+		["<leader>gil"] = { "<CMD>Octo issue list<CR>", "list" },
+		["<leader>gis"] = { "<CMD>Octo issue search<CR>", "search" },
+		["<leader>gir"] = { "<CMD>Octo issue reload<CR>", "reload" },
+		["<leader>gib"] = { "<CMD>Octo issue browser<CR>", "browser" },
+		["<leader>giu"] = { "<CMD>Octo issue url<CR>", "url" },
+
+		-- pr
+		["<leader>gpl"] = { "<CMD>Octo pr list<CR>", "list" },
+		["<leader>gps"] = { "<CMD>Octo pr search<CR>", "search" },
+		["<leader>gpe"] = { "<CMD>Octo pr edit<CR>", "edit" },
+		["<leader>gpR"] = { "<CMD>Octo pr reopen<CR>", "reopen" },
+		["<leader>gpc"] = { "<CMD>Octo pr create<CR>", "create" },
+		["<leader>gpC"] = { "<CMD>Octo pr close<CR>", "close" },
+		["<leader>gpo"] = { "<CMD>Octo pr checkout<CR>", "checkout" },
+		["<leader>gpO"] = { "<CMD>Octo pr commits<CR>", "commits" },
+		["<leader>gpd"] = { "<CMD>Octo pr diff<CR>", "diff" },
+		["<leader>gpm"] = { "<CMD>Octo pr merge<CR>", "merge" },
+		["<leader>gpi"] = { "<CMD>Octo pr ready<CR>", "ready" },
+		["<leader>gpS"] = { "<CMD>Octo pr checks<CR>", "checks" },
+		["<leader>gpr"] = { "<CMD>Octo pr reload<CR>", "reload" },
+		["<leader>gpb"] = { "<CMD>Octo pr browser<CR>", "browser" },
+		["<leader>gpu"] = { "<CMD>Octo pr url<CR>", "url" },
+
+		-- repo
+		["<leader>grl"] = { "<CMD>Octo repo list<CR>", "list" },
+		["<leader>grf"] = { "<CMD>Octo repo fork<CR>", "fork" },
+		["<leader>grb"] = { "<CMD>Octo repo browser<CR>", "browser" },
+		["<leader>gru"] = { "<CMD>Octo repo url<CR>", "url" },
+		["<leader>grv"] = { "<CMD>Octo repo view<CR>", "view" },
+
+		-- other
+		-- gists
+		["<leader>gog"] = { "<CMD>Octo gist list<CR>", "list gists" },
+		-- comments
+		["<leader>goca"] = { "<CMD>Octo comment add<CR>", "add comment" },
+		["<leader>gocd"] = { "<CMD>Octo comment delete<CR>", "delete comment" },
+		-- threads
+		["<leader>gotr"] = { "<CMD>Octo thread resolve<CR>", "resolve thread" },
+		["<leader>gotu"] = { "<CMD>Octo thread unresolve<CR>", "unresolve thread" },
+		-- labels
+		["<leader>gola"] = { "<CMD>Octo label add<CR>", "add label" },
+		["<leader>golr"] = { "<CMD>Octo label remove<CR>", "remove label" },
+		["<leader>golc"] = { "<CMD>Octo label create<CR>", "create label" },
+	},
+}
+
 return M

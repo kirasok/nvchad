@@ -337,6 +337,17 @@ local plugins = {
 			vim.cmd("TableModeToggle")
 		end,
 	},
+
+	{
+		"pwntester/octo.nvim",
+		init = function()
+			require("core.utils").load_mappings("octo")
+		end,
+		cmd = "Octo",
+		config = function(_, opts)
+			require("octo").setup(opts)
+		end,
+	},
 }
 
 return plugins
