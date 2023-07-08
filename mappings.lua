@@ -32,6 +32,18 @@ M.general = {
 	},
 }
 
+M.tabufline = {
+	n = {
+		["<S-tab>"] = { "" },
+		["\\<tab>"] = {
+			function()
+				require("nvchad_ui.tabufline").tabuflinePrev()
+			end,
+			"Goto prev buffer",
+		},
+	},
+}
+
 M.lspconfig = {
 	-- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 	n = {
