@@ -348,6 +348,11 @@ local plugins = {
 			require("octo").setup(opts)
 		end,
 	},
+
+	{
+		"elkowar/yuck.vim",
+		ft = "yuck",
+	},
 }
 
 return plugins
