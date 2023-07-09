@@ -7,6 +7,7 @@ local highlights = require("custom.highlights")
 M.ui = {
 	theme = "rosepine",
 	theme_toggle = { "rosepine", "rosepine_dawn" },
+	transparency = true,
 	lsp_semantic_tokens = true,
 
 	hl_override = highlights.override,
