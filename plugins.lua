@@ -155,7 +155,7 @@ local plugins = {
 	{
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
-		event = "BufRead",
+		event = "VimEnter",
 		config = function()
 			require("nvim-lastplace").setup({
 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
@@ -421,6 +421,45 @@ local plugins = {
 			snippet_engine = "luasnip",
 		},
 		config = true,
+	},
+
+	{
+		"olimorris/persisted.nvim",
+		enabled = false,
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		lazy = false,
+		init = function(_)
+			require("core.utils").load_mappings("persisted")
+		end,
+		opts = {
+			autoload = true,
+			on_autoload_no_session = function()
+				vim.notify("No session to load")
+			end,
+			autosave = true,
+			should_autosave = function()
+				local ft = vim.bo.filetype
+				if ft == "nvdash" or ft == "NvimTree" then
+					return false
+				end
+				vim.notify("Session saved")
+				return true
+			end,
+			allowed_dirs = {
+				"~/Documents",
+			},
+		},
+		config = function(_, opts)
+			require("persisted").setup(opts)
+			require("telescope").load_extension("persisted")
+			vim.api.nvim_create_autocmd({ "VimEnter" }, {
+				callback = function()
+					require("persisted").load()
+				end,
+			})
+		end,
 	},
 }
 

@@ -375,4 +375,14 @@ M.neogen = {
 	},
 }
 
+M.persisted = {
+	plugin = true,
+	n = {
+		["<leader>fp"] = {
+			":Telescope persisted<cr>",
+			"find persisted",
+		},
+	},
+}
+
 return M
