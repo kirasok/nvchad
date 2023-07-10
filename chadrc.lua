@@ -10,6 +10,8 @@ M.ui = {
 	transparency = true,
 	lsp_semantic_tokens = true,
 
+	extended_integrations = { "dap" },
+
 	hl_override = highlights.override,
 	hl_add = highlights.add,
 
