@@ -461,6 +461,15 @@ local plugins = {
 			})
 		end,
 	},
+
+	{
+		"kevinhwang91/nvim-bqf",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		ft = "qf",
+		config = true,
+	},
 }
 
 return plugins
