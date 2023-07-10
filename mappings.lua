@@ -341,4 +341,16 @@ M.octo = {
 	},
 }
 
+M.undotree = {
+	plugin = true,
+	n = {
+		["<leader>fu"] = {
+			function()
+				require("telescope").extensions.undo.undo()
+			end,
+			"undo tree",
+		},
+	},
+}
+
 return M
