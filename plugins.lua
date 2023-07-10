@@ -349,6 +349,7 @@ local plugins = {
 	{
 		"gbprod/yanky.nvim",
 		event = "BufRead",
+		opts = require("custom.configs.yanky"),
 		config = true,
 	},
 
