@@ -155,7 +155,7 @@ local plugins = {
 	{
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
-		event = "VimEnter",
+		lazy = false,
 		config = function()
 			require("nvim-lastplace").setup({
 				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
@@ -479,7 +479,7 @@ local plugins = {
 
 	{
 		"GnikDroy/projections.nvim",
-    enabled = false,
+		enabled = false,
 		lazy = false,
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
