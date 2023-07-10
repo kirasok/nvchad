@@ -26,59 +26,7 @@ local plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			ensure_installed = {
-				"bash",
-				"bibtex",
-				"c",
-				"cmake",
-				"cooklang",
-				"cpp",
-				"css",
-				"dart",
-				"dockerfile",
-				"git_config",
-				"git_rebase",
-				"gitattributes",
-				"gitcommit",
-				"gitignore",
-				"go",
-				"gomod",
-				"haskell",
-				"html",
-				"http",
-				"ini",
-				"java",
-				"javascript",
-				"jq",
-				"jsdoc",
-				"json",
-				"json5",
-				"jsonc",
-				"kotlin",
-				"latex",
-				"ledger",
-				"lua",
-				"make",
-				"markdown",
-				"markdown_inline",
-				"mermaid",
-				"nix",
-				"norg",
-				"python",
-				"query",
-				"rasi",
-				"regex",
-				"rust",
-				"sql",
-				"toml",
-				"tsx",
-				"typescript",
-				"vim",
-				"vimdoc",
-				"yaml",
-			},
-		},
+		opts = require("custom.configs.nvim-treesitter"),
 	},
 
 	{
@@ -110,41 +58,19 @@ local plugins = {
 			require("core.utils").load_mappings("zk")
 		end,
 		ft = "markdown",
-		config = function()
-			require("zk").setup({
-				picker = "telescope",
-				auto_attach = {
-					enabled = true,
-					filetypes = { "markdown" },
-				},
-			})
+		opts = require("custom.configs.zk-nvim"),
+		config = function(_, opts)
+			require("zk").setup(opts)
 			vim.cmd([[set backupcopy=yes]])
 		end,
 	},
 
 	{
 		"NvChad/nvim-colorizer.lua",
-		ft = { "javascript", "css", "toml", "yaml" },
+		ft = { "javascript", "css", "toml", "yaml", "scss" },
+		opts = require("custom.configs.nvim-colorizer"),
 		config = function(_, opts)
-			require("colorizer").setup({
-				user_default_options = {
-					RGB = true, -- #RGB hex codes
-					RRGGBB = true, -- #RRGGBB hex codes
-					names = true, -- "Name" codes like Blue or blue
-					RRGGBBAA = true, -- #RRGGBBAA hex codes
-					AARRGGBB = true, -- 0xAARRGGBB hex codes
-					rgb_fn = true, -- CSS rgb() and rgba() functions
-					hsl_fn = true, -- CSS hsl() and hsla() functions
-					css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-					css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-					-- Available modes for `mode`: foreground, background,  virtualtext
-					mode = "background", -- Set the display mode.
-					-- Available methods are false / true / "normal" / "lsp" / "both"
-					-- True is same as normal
-					tailwind = true, -- Enable tailwind colors
-				},
-			})
-
+			require("colorizer").setup(opts)
 			-- execute colorizer as soon as possible
 			vim.defer_fn(function()
 				require("colorizer").attach_to_buffer(0)
@@ -156,18 +82,8 @@ local plugins = {
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
 		lazy = false,
-		config = function()
-			require("nvim-lastplace").setup({
-				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-				lastplace_ignore_filetype = {
-					"gitcommit",
-					"gitrebase",
-					"svn",
-					"hgcommit",
-				},
-				lastplace_open_folds = true,
-			})
-		end,
+		opts = require("custom.configs.nvim-lastplace"),
+		config = true,
 	},
 
 	{
@@ -181,10 +97,23 @@ local plugins = {
 	{
 		-- autoclose and autorename html tags
 		"windwp/nvim-ts-autotag",
-		ft = "html",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
+		ft = {
+			"astro",
+			"glimmer",
+			"handlebars",
+			"html",
+			"javascript",
+			"jsx",
+			"markdown",
+			"php",
+			"rescript",
+			"svelte",
+			"tsx",
+			"typescript",
+			"vue",
+			"xml",
+		},
+		config = true,
 	},
 
 	{
@@ -209,9 +138,7 @@ local plugins = {
 		-- removes all unnecessary views and centers text
 		"folke/zen-mode.nvim",
 		cmd = { "ZenMode" },
-		config = function()
-			require("zen-mode").setup({})
-		end,
+		config = true,
 	},
 
 	{
@@ -288,18 +215,8 @@ local plugins = {
 		"kirasok/clipboard-image.nvim",
 		ft = { "markdown" },
 		cmd = { "PasteImg" },
-		config = function()
-			require("clipboard-image").setup({
-				default = {
-					img_dir = { "%:p:h", "static" }, -- Relative to current file
-				},
-				markdown = {
-					img_dir = { "%:p:h", "static" },
-					img_dir_txt = "static",
-					affix = "![clipboard_img](%s)",
-				},
-			})
-		end,
+		opts = require("custom.configs.clipboard-image"),
+		config = true,
 	},
 
 	{
@@ -345,9 +262,7 @@ local plugins = {
 			require("core.utils").load_mappings("octo")
 		end,
 		cmd = "Octo",
-		config = function(_, opts)
-			require("octo").setup(opts)
-		end,
+		config = true,
 	},
 
 	{
@@ -417,9 +332,7 @@ local plugins = {
 		init = function(_)
 			require("core.utils").load_mappings("neogen")
 		end,
-		opts = {
-			snippet_engine = "luasnip",
-		},
+		opts = require("custom.configs.neogen"),
 		config = true,
 	},
 
@@ -433,24 +346,7 @@ local plugins = {
 		init = function(_)
 			require("core.utils").load_mappings("persisted")
 		end,
-		opts = {
-			autoload = true,
-			on_autoload_no_session = function()
-				vim.notify("No session to load")
-			end,
-			autosave = true,
-			should_autosave = function()
-				local ft = vim.bo.filetype
-				if ft == "nvdash" or ft == "NvimTree" then
-					return false
-				end
-				vim.notify("Session saved")
-				return true
-			end,
-			allowed_dirs = {
-				"~/Documents",
-			},
-		},
+		opts = require("custom.configs.persisted"),
 		config = function(_, opts)
 			require("persisted").setup(opts)
 			require("telescope").load_extension("persisted")
@@ -487,20 +383,7 @@ local plugins = {
 		init = function()
 			require("core.utils").load_mappings("projections")
 		end,
-		opts = {
-			workspaces = { -- Default workspaces to search for
-				"~/Documents",
-			},
-			store_hooks = {
-				pre = function()
-					-- nvim-tree
-					local nvim_tree_present, api = pcall(require, "nvim-tree.api")
-					if nvim_tree_present then
-						api.tree.close()
-					end
-				end,
-			},
-		},
+		opts = require("custom.configs.projections"),
 		config = function(_, opts)
 			require("projections").setup(opts)
 			require("telescope").load_extension("projections")
