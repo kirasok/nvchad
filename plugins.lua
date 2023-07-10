@@ -379,6 +379,12 @@ local plugins = {
 			require("telescope").load_extension("undo")
 		end,
 	},
+
+	{
+		"tzachar/highlight-undo.nvim",
+		event = "BufEnter",
+		config = true,
+	},
 }
 
 return plugins
