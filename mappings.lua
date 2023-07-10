@@ -375,12 +375,12 @@ M.neogen = {
 	},
 }
 
-M.persisted = {
+M.projections = {
 	plugin = true,
 	n = {
 		["<leader>fp"] = {
-			":Telescope persisted<cr>",
-			"find persisted",
+			":Telescope projections<cr>",
+			"find projects",
 		},
 	},
 }
