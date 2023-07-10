@@ -382,7 +382,7 @@ local plugins = {
 
 	{
 		"tzachar/highlight-undo.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config = true,
 	},
 
