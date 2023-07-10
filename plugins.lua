@@ -183,19 +183,6 @@ local plugins = {
 	},
 
 	{
-		-- preview markdown
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		ft = { "markdown" },
-		cmd = { "MarkdownPreview" },
-		init = function()
-			vim.g.mkdp_filetypes = {
-				"markdown",
-			}
-		end,
-	},
-
-	{
 		-- ledger plugin for (neo)vim
 		"ledger/vim-ledger",
 		ft = { "ledger" },
