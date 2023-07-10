@@ -87,14 +87,6 @@ local plugins = {
 	},
 
 	{
-		-- live js server
-		"turbio/bracey.vim",
-		ft = { "javascript", "typescript", "html", "css" },
-		cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
-		build = "npm install --prefix server",
-	},
-
-	{
 		-- autoclose and autorename html tags
 		"windwp/nvim-ts-autotag",
 		ft = {
