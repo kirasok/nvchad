@@ -470,6 +470,12 @@ local plugins = {
 		ft = "qf",
 		config = true,
 	},
+
+	{
+		"gbprod/yanky.nvim",
+		event = "BufRead",
+		config = true,
+	},
 }
 
 return plugins
