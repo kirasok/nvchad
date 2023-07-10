@@ -353,4 +353,26 @@ M.undotree = {
 	},
 }
 
+M.neogen = {
+	plugin = true,
+	n = {
+		["<leader>nn"] = {
+			":Neogen func<cr>",
+			"neogen function",
+		},
+		["<leader>nc"] = {
+			":Neogen class<cr>",
+			"neogen class",
+		},
+		["<leader>nf"] = {
+			":Neogen file<cr>",
+			"neogen file",
+		},
+		["<leader>nt"] = {
+			":Neogen type<cr>",
+			"neogen type",
+		},
+	},
+}
+
 return M

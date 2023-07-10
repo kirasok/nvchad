@@ -14,6 +14,7 @@ local plugins = {
 				g = { name = "git" },
 				i = { name = "info" },
 				w = { name = "workspace" },
+				n = { name = "neogen" },
 			}, { prefix = "<leader>" })
 		end,
 	},
@@ -407,6 +408,19 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		event = "BufRead",
+	},
+
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		cmd = "Neogen",
+		init = function(_)
+			require("core.utils").load_mappings("neogen")
+		end,
+		opts = {
+			snippet_engine = "luasnip",
+		},
+		config = true,
 	},
 }
 
