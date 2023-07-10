@@ -385,6 +385,12 @@ local plugins = {
 		event = "BufEnter",
 		config = true,
 	},
+
+	{
+		"max397574/better-escape.nvim",
+		event = "InsertEnter",
+		config = true,
+	},
 }
 
 return plugins
