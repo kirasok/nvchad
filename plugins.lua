@@ -391,6 +391,15 @@ local plugins = {
 		event = "InsertEnter",
 		config = true,
 	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		event = "BufRead",
+		config = true,
+	},
 }
 
 return plugins
