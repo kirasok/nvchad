@@ -14,7 +14,6 @@ local sources = {
 	lint.deno_lint,
 	lint.zsh,
 	lint.actionlint,
-	lint.shellcheck,
 	lint.ruff,
 }
 
