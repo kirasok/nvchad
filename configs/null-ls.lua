@@ -8,6 +8,7 @@ local sources = {
 	formatting.taplo,
 	formatting.yamlfmt,
 	formatting.ruff,
+	formatting.gofumpt,
 	formatting.shfmt.with({ extra_filetypes = { "zsh" } }),
 	formatting.deno_fmt.with({ extra_args = { "--line-width", "9999" } }),
 	formatting.stylish_haskell,
