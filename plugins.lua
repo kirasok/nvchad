@@ -48,6 +48,7 @@ local plugins = {
 		config = function(_, opts)
 			require("plugins.configs.others").luasnip(opts)
 			require("custom.configs.luasnip")
+			require("core.utils").load_mappings("lspconfig")
 		end,
 	},
 
