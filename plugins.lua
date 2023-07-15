@@ -263,19 +263,19 @@ local plugins = {
 		end,
 	},
 
-	{
-		"debugloop/telescope-undo.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		init = function(_)
-			require("core.utils").load_mappings("undotree")
-		end,
-		cmd = "Telescope",
-		config = function()
-			require("telescope").load_extension("undo")
-		end,
-	},
+	-- {
+	-- 	"debugloop/telescope-undo.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- 	init = function(_)
+	-- 		require("core.utils").load_mappings("undotree")
+	-- 	end,
+	-- 	cmd = "Telescope",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("undo")
+	-- 	end,
+	-- },
 
 	{
 		"tzachar/highlight-undo.nvim",
