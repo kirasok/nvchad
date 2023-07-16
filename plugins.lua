@@ -135,52 +135,20 @@ local plugins = {
 	},
 
 	{
-		-- configs texlab to sync cursor position with zathura BUG: not working
-		"f3fora/nvim-texlabconfig",
-		ft = { "tex", "bib" },
-		config = function()
-			require("texlabconfig").setup()
-			local lspconfig = require("lspconfig")
-			local executable = "zathura"
-			local args = {
-				"--synctex-editor-command",
-				[[nvim-texlabconfig -file '%{input}' -line %{line}]],
-				"--synctex-forward",
-				"%l:1:%f",
-				"%p",
-			}
-
-			lspconfig.texlab.setup({
-				settings = {
-					texlab = {
-						build = {
-							executable = "latexmk",
-							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-							onSave = true,
-							forwardSearchAfter = true,
-						},
-						chktex = {
-							onOpenAndSave = true,
-						},
-						forwardSearch = {
-							executable = executable,
-							args = args,
-						},
-						formatterLineLength = 0,
-					},
-				},
-			})
-		end,
-		build = "go build -o ~/.local/bin/",
-	},
-
-	{
 		-- conceal things for better document editing
 		"KeitaNakamura/tex-conceal.vim",
 		ft = "tex",
 		config = function()
 			vim.g["tex_conceal"] = "abdgm"
 		end,
+	},
+
+	{
+		"iurimateus/luasnip-latex-snippets.nvim",
+		dependencies = { "L3MON4D3/LuaSnip", "nvim-treesitter/nvim-treesitter" },
+		opts = { use_treesitter = true },
+		config = true,
+		ft = { "tex", "markdown" },
 	},
 
 	{

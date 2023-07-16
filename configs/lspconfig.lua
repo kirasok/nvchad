@@ -14,11 +14,28 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.gopls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
+	on_attach = on_attach,
+	capabilities = capabilities,
 	settings = {
 		gopls = {
 			gofumpt = true,
+		},
+	},
+})
+
+lspconfig.texlab.setup({
+	settings = {
+		texlab = {
+			build = {
+				executable = "latexmk",
+				args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+				onSave = true,
+				forwardSearchAfter = true,
+			},
+			chktex = {
+				onOpenAndSave = true,
+			},
+			formatterLineLength = 0,
 		},
 	},
 })
