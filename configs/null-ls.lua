@@ -7,7 +7,7 @@ local sources = {
 	formatting.stylua,
 	formatting.taplo,
 	formatting.yamlfmt,
-	formatting.ruff,
+	formatting.black,
 	formatting.gofumpt,
 	formatting.shfmt.with({ extra_filetypes = { "zsh" } }),
 	formatting.deno_fmt.with({ extra_args = { "--line-width", "9999" } }),
@@ -15,7 +15,6 @@ local sources = {
 	lint.deno_lint,
 	lint.zsh,
 	lint.actionlint,
-	lint.ruff,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
