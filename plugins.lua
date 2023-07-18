@@ -214,38 +214,6 @@ local plugins = {
 	},
 
 	{
-		"elkowar/yuck.vim",
-		ft = "yuck",
-	},
-
-	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		enabled = false,
-		event = "LspAttach",
-		config = function()
-			require("lsp_lines").setup()
-			-- Disable virtual_text since it's redundant due to lsp_lines.
-			vim.diagnostic.config({
-				virtual_text = false,
-			})
-		end,
-	},
-
-	-- {
-	-- 	"debugloop/telescope-undo.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-telescope/telescope.nvim",
-	-- 	},
-	-- 	init = function(_)
-	-- 		require("core.utils").load_mappings("undotree")
-	-- 	end,
-	-- 	cmd = "Telescope",
-	-- 	config = function()
-	-- 		require("telescope").load_extension("undo")
-	-- 	end,
-	-- },
-
-	{
 		"tzachar/highlight-undo.nvim",
 		event = "BufRead",
 		config = true,
@@ -286,28 +254,6 @@ local plugins = {
 	},
 
 	{
-		"olimorris/persisted.nvim",
-		enabled = false,
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		lazy = false,
-		init = function(_)
-			require("core.utils").load_mappings("persisted")
-		end,
-		opts = require("custom.configs.persisted"),
-		config = function(_, opts)
-			require("persisted").setup(opts)
-			require("telescope").load_extension("persisted")
-			vim.api.nvim_create_autocmd({ "VimEnter" }, {
-				callback = function()
-					require("persisted").load()
-				end,
-			})
-		end,
-	},
-
-	{
 		"kevinhwang91/nvim-bqf",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -321,42 +267,6 @@ local plugins = {
 		event = "BufRead",
 		opts = require("custom.configs.yanky"),
 		config = true,
-	},
-
-	{
-		"GnikDroy/projections.nvim",
-		enabled = false,
-		lazy = false,
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		init = function()
-			require("core.utils").load_mappings("projections")
-		end,
-		opts = require("custom.configs.projections"),
-		config = function(_, opts)
-			require("projections").setup(opts)
-			require("telescope").load_extension("projections")
-
-			local Session = require("projections.session")
-			-- Autostore session on VimExit
-			vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
-				callback = function()
-					Session.store(vim.loop.cwd())
-				end,
-			})
-			-- Switch to project if vim was started in a project dir
-			local switcher = require("projections.switcher")
-			vim.api.nvim_create_autocmd({ "VimEnter" }, {
-				callback = function()
-					if vim.fn.argc() == 0 then
-						switcher.switch(vim.loop.cwd())
-					end
-				end,
-			})
-
-			vim.opt.sessionoptions:append("localoptions")
-		end,
 	},
 
 	{
