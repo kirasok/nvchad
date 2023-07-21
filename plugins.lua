@@ -281,6 +281,12 @@ local plugins = {
 			cmp.setup(config)
 		end,
 	},
+
+	{
+		"m4xshen/smartcolumn.nvim",
+		event = "BufRead",
+		config = true,
+	},
 }
 
 return plugins
