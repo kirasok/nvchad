@@ -287,6 +287,12 @@ local plugins = {
 		event = "BufRead",
 		config = true,
 	},
+
+	{
+		"RaafatTurki/hex.nvim",
+		event = "BufRead",
+		config = true,
+	},
 }
 
 return plugins
