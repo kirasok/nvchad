@@ -293,6 +293,24 @@ local plugins = {
 		event = "BufRead",
 		config = true,
 	},
+
+	{
+		"gelguy/wilder.nvim",
+		event = "BufRead",
+		opts = { modes = { ":", "/", "?" } },
+		config = function(_, opts)
+			local wilder = require("wilder")
+			wilder.setup(opts)
+			wilder.set_option(
+				"renderer",
+				wilder.popupmenu_renderer({
+					highlighter = wilder.basic_highlighter(),
+					left = { " ", wilder.popupmenu_devicons() },
+					right = { " ", wilder.popupmenu_scrollbar() },
+				})
+			)
+		end,
+	},
 }
 
 return plugins
