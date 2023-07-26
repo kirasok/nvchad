@@ -296,7 +296,7 @@ local plugins = {
 
 	{
 		"gelguy/wilder.nvim",
-		event = "BufRead",
+		event = "CmdlineEnter",
 		opts = { modes = { ":", "/", "?" } },
 		config = function(_, opts)
 			local wilder = require("wilder")
