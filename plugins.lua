@@ -331,6 +331,14 @@ local plugins = {
 			)
 		end,
 	},
+
+	{
+		"ahmedkhalf/project.nvim",
+		event = "BufEnter",
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	},
 }
 
 return plugins
