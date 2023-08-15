@@ -375,11 +375,11 @@ M.neogen = {
 	},
 }
 
-M.projections = {
+M.projects = {
 	plugin = true,
 	n = {
 		["<leader>fp"] = {
-			":Telescope projections<cr>",
+			":Telescope projects<cr>",
 			"find projects",
 		},
 	},

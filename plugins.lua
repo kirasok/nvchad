@@ -335,8 +335,12 @@ local plugins = {
 	{
 		"ahmedkhalf/project.nvim",
 		event = "BufEnter",
+		init = function(_)
+			require("core.utils").load_mappings("projects")
+		end,
 		config = function()
 			require("project_nvim").setup({})
+			require("telescope").load_extension("projects")
 		end,
 	},
 }
