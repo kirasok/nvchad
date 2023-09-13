@@ -343,6 +343,12 @@ local plugins = {
 			require("telescope").load_extension("projects")
 		end,
 	},
+
+	{
+		"simrat39/symbols-outline.nvim",
+		cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+		config = true,
+	},
 }
 
 return plugins
