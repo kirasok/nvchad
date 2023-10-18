@@ -406,6 +406,19 @@ local plugins = {
 			)
 		end,
 	},
+
+	{
+		"cpea2506/relative-toggle.nvim",
+		event = "BufEnter",
+		opts = {
+			pattern = "*",
+			events = {
+				on = { "BufEnter", "FocusGained", "InsertLeave", "WinEnter", "CmdlineLeave" },
+				off = { "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdlineEnter" },
+			},
+		},
+		config = true,
+	},
 }
 
 return plugins
