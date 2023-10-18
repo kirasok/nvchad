@@ -419,6 +419,18 @@ local plugins = {
 		},
 		config = true,
 	},
+
+	{
+		"HiPhish/nvim-ts-rainbow2",
+		event = "BufRead",
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup({
+				rainbow = {
+					enable = true,
+				},
+			})
+		end,
+	},
 }
 
 return plugins
