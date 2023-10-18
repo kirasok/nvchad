@@ -373,6 +373,23 @@ local plugins = {
 		version = "*",
 		config = true,
 	},
+
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim", -- required by telescope
+			"MunifTanjim/nui.nvim",
+
+			-- optional
+			"rcarriga/nvim-notify",
+			"nvim-tree/nvim-web-devicons",
+		},
+		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
+		config = true,
+	},
 }
 
 return plugins
