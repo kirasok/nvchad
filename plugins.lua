@@ -366,6 +366,13 @@ local plugins = {
 			})
 		end,
 	},
+
+	{
+		"calops/hmts.nvim",
+		ft = "nix",
+		version = "*",
+		config = true,
+	},
 }
 
 return plugins
