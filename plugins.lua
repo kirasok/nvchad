@@ -167,7 +167,10 @@ local plugins = {
 		"iurimateus/luasnip-latex-snippets.nvim",
 		dependencies = { "L3MON4D3/LuaSnip", "nvim-treesitter/nvim-treesitter" },
 		opts = { use_treesitter = true },
-		config = true,
+		config = function(_, opts)
+			require("luasnip-latex-snippets").setup(opts)
+			require("luasnip").config.setup({ enable_autosnippets = true })
+		end,
 		ft = { "tex", "markdown" },
 	},
 
