@@ -100,6 +100,13 @@ local plugins = {
 	},
 
 	{
+		"folke/todo-comments.nvim",
+		event = "BufRead",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
+	},
+
+	{
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
 		lazy = false,
