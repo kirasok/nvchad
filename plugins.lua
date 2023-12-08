@@ -31,7 +31,7 @@ local plugins = {
 
 	{
 		"nvim-tree/nvim-tree.lua",
-		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle" },
 		init = function()
 			require("core.utils").load_mappings("nvimtree")
 		end,
