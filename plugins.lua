@@ -52,10 +52,17 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("custom.configs.null-ls")
-			end,
+			{
+				"mfussenegger/nvim-lint",
+				config = function(_, opts)
+					require("custom.configs.nvim-lint")
+				end,
+			},
+			{
+				"https://github.com/stevearc/conform.nvim",
+				opts = require("custom.configs.conform"),
+				config = true,
+			},
 		},
 		config = function()
 			require("plugins.configs.lspconfig")
