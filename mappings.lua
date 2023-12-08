@@ -98,7 +98,7 @@ M.lspconfig = {
 		["<leader>ra"] = { "" },
 		["fr"] = {
 			function()
-				require("nvchad_ui.renamer").open()
+				require("nvchad.renamer").open()
 			end,
 			"LSP rename",
 		},
