@@ -6,6 +6,8 @@ require("lint").linters_by_ft = {
 	sh = { "shellcheck" },
 	zsh = { "zsh", "shellcheck" },
 	yaml = { "actionlint" },
+	json = { "jsonlint" },
+	python = { "pylint", "pydocstyle", "pycodestyle" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
