@@ -30,6 +30,7 @@ local servers = {
 	"jedi_language_server",
 	"hls",
 	"clangd",
+	"html",
 }
 
 for _, lsp in ipairs(servers) do
