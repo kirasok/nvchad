@@ -386,4 +386,18 @@ M.projects = {
 	},
 }
 
+M.outline = {
+	plugin = true,
+	n = {
+		["<leader>o"] = {
+			"<cmd> Outline! <CR>",
+			"outline open",
+		},
+		["<leader>O"] = {
+			"<cmd> Outline <CR>",
+			"outline open and focus",
+		},
+	},
+}
+
 return M

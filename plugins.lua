@@ -362,8 +362,17 @@ local plugins = {
 	},
 
 	{
-		"simrat39/symbols-outline.nvim",
-		cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+		"hedyhli/outline.nvim",
+		cmd = { "Outline" },
+		init = function(_)
+			require("core.utils").load_mappings("outline")
+		end,
+		opts = {
+			outline_window = {
+				auto_close = true,
+				auto_jump = true,
+			},
+		},
 		config = true,
 	},
 
