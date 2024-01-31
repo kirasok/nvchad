@@ -25,6 +25,10 @@ local plugins = {
 	},
 
 	{
+		"kirasok/base46",
+	},
+
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = require("custom.configs.nvim-treesitter"),
 	},
