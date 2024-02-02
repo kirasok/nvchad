@@ -24,9 +24,9 @@ local plugins = {
 		enabled = false,
 	},
 
-	{
-		"kirasok/base46",
-	},
+	-- {
+	-- 	"kirasok/base46",
+	-- },
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -444,6 +444,16 @@ local plugins = {
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
+	},
+
+	{
+		"akinsho/flutter-tools.nvim",
+		ft = "dart",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"stevearc/dressing.nvim", -- optional for vim.ui.select
+		},
+		config = true,
 	},
 }
 
