@@ -29,6 +29,11 @@ local plugins = {
 	-- },
 
 	{
+		"rafamadriz/friendly-snippets",
+		enabled = false,
+	},
+
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = require("custom.configs.nvim-treesitter"),
 	},
