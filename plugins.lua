@@ -406,6 +406,9 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
+		opts = {
+			lang = "python",
+		},
 		config = true,
 	},
 
