@@ -1,5 +1,5 @@
-local nvchad_on_attach = require("plugins.configs.lspconfig").on_attach
-local nvchad_capabilities = require("plugins.configs.lspconfig").capabilities
+local nvchad_on_attach = require("nvchad.configs.lspconfig").on_attach
+local nvchad_capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local on_attach = function(client, bufnr)
 	nvchad_on_attach(client, bufnr)

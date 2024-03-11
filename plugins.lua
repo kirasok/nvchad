@@ -31,17 +31,14 @@ local plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = require("custom.configs.nvim-treesitter"),
+		opts = require("configs.nvim-treesitter"),
 	},
 
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle" },
-		init = function()
-			require("core.utils").load_mappings("nvimtree")
-		end,
 		opts = function()
-			return require("plugins.configs.nvimtree")
+			return require("nvchad.configs.nvimtree")
 		end,
 		config = function(_, opts)
 			dofile(vim.g.base46_cache .. "nvimtree")
@@ -60,38 +57,34 @@ local plugins = {
 			{
 				"mfussenegger/nvim-lint",
 				config = function(_, opts)
-					require("custom.configs.nvim-lint")
+					require("configs.nvim-lint")
 				end,
 			},
 			{
-				"https://github.com/stevearc/conform.nvim",
-				opts = require("custom.configs.conform"),
+				"stevearc/conform.nvim",
+				opts = require("configs.conform"),
 				config = true,
 			},
 		},
 		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.configs.lspconfig")
+			require("nvchad.configs.lspconfig")
+			require("configs.lspconfig")
 		end,
 	},
 
 	{
 		"L3MON4D3/LuaSnip",
 		config = function(_, opts)
-			require("plugins.configs.others").luasnip(opts)
-			require("custom.configs.luasnip")
-			require("core.utils").load_mappings("lspconfig")
+			require("nvchad.configs.luasnip")
+			require("configs.luasnip")
 		end,
 	},
 
 	{
 		-- manage zettelkasten
 		"mickael-menu/zk-nvim",
-		init = function()
-			require("core.utils").load_mappings("zk")
-		end,
 		ft = "markdown",
-		opts = require("custom.configs.zk-nvim"),
+		opts = require("configs.zk-nvim"),
 		config = function(_, opts)
 			require("zk").setup(opts)
 			vim.cmd([[set backupcopy=yes]])
@@ -101,7 +94,7 @@ local plugins = {
 	{
 		"NvChad/nvim-colorizer.lua",
 		ft = { "javascript", "css", "toml", "yaml", "scss" },
-		opts = require("custom.configs.nvim-colorizer"),
+		opts = require("configs.nvim-colorizer"),
 		config = function(_, opts)
 			require("colorizer").setup(opts)
 			-- execute colorizer as soon as possible
@@ -122,7 +115,7 @@ local plugins = {
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
 		lazy = false,
-		opts = require("custom.configs.nvim-lastplace"),
+		opts = require("configs.nvim-lastplace"),
 		config = true,
 	},
 
@@ -167,13 +160,6 @@ local plugins = {
 	},
 
 	{
-		-- removes all unnecessary views and centers text
-		"folke/zen-mode.nvim",
-		cmd = { "ZenMode" },
-		config = true,
-	},
-
-	{
 		-- conceal things for better document editing
 		"KeitaNakamura/tex-conceal.vim",
 		ft = "tex",
@@ -205,7 +191,7 @@ local plugins = {
 		"kirasok/clipboard-image.nvim",
 		ft = { "markdown" },
 		cmd = { "PasteImg" },
-		opts = require("custom.configs.clipboard-image"),
+		opts = require("configs.clipboard-image"),
 		config = true,
 	},
 
@@ -230,29 +216,6 @@ local plugins = {
 	{
 		"kirasok/vim-klog",
 		ft = { "klog" },
-	},
-
-	{
-		"dhruvasagar/vim-table-mode",
-		init = function()
-			require("core.utils").load_mappings("vimtablemode")
-		end,
-		ft = { "markdown" },
-		config = function()
-			vim.g.table_mode_corner = "|"
-			vim.g.table_mode_disable_mappings = 1
-			vim.g.table_mode_disable_tableize_mappings = 1
-			vim.cmd("TableModeToggle")
-		end,
-	},
-
-	{
-		"pwntester/octo.nvim",
-		init = function()
-			require("core.utils").load_mappings("octo")
-		end,
-		cmd = "Octo",
-		config = true,
 	},
 
 	{
@@ -285,17 +248,6 @@ local plugins = {
 	},
 
 	{
-		"danymat/neogen",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		cmd = "Neogen",
-		init = function(_)
-			require("core.utils").load_mappings("neogen")
-		end,
-		opts = require("custom.configs.neogen"),
-		config = true,
-	},
-
-	{
 		"kevinhwang91/nvim-bqf",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -307,7 +259,7 @@ local plugins = {
 	{
 		"gbprod/yanky.nvim",
 		event = "BufRead",
-		opts = require("custom.configs.yanky"),
+		opts = require("configs.yanky"),
 		config = true,
 	},
 
@@ -352,33 +304,6 @@ local plugins = {
 				})
 			)
 		end,
-	},
-
-	{
-		"ahmedkhalf/project.nvim",
-		event = "BufEnter",
-		init = function(_)
-			require("core.utils").load_mappings("projects")
-		end,
-		config = function()
-			require("project_nvim").setup({})
-			require("telescope").load_extension("projects")
-		end,
-	},
-
-	{
-		"hedyhli/outline.nvim",
-		cmd = { "Outline" },
-		init = function(_)
-			require("core.utils").load_mappings("outline")
-		end,
-		opts = {
-			outline_window = {
-				auto_close = true,
-				auto_jump = true,
-			},
-		},
-		config = true,
 	},
 
 	{
@@ -431,13 +356,6 @@ local plugins = {
 				},
 			})
 		end,
-	},
-
-	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
-		config = true,
 	},
 
 	{
