@@ -24,10 +24,6 @@ local plugins = {
 		enabled = false,
 	},
 
-	-- {
-	-- 	"kirasok/base46",
-	-- },
-
 	{
 		"rafamadriz/friendly-snippets",
 		enabled = false,
@@ -407,7 +403,7 @@ local plugins = {
 		},
 		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
 		opts = {
-			lang = "python",
+			lang = "python3",
 		},
 		config = true,
 	},
