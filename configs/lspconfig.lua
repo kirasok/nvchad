@@ -31,6 +31,7 @@ local servers = {
 	"hls",
 	"clangd",
 	"html",
+	"jsonls",
 }
 
 for _, lsp in ipairs(servers) do
