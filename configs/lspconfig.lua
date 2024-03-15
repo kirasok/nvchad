@@ -32,6 +32,7 @@ local servers = {
 	"clangd",
 	"html",
 	"jsonls",
+	"cssls",
 }
 
 for _, lsp in ipairs(servers) do
