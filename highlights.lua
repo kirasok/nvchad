@@ -33,9 +33,6 @@ M.override = {
 	NvDashButtons = {
 		bg = "none",
 	},
-	CursorLine = {
-		bg = "one_bg",
-	},
 }
 
 ---@type HLTable
