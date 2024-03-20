@@ -367,6 +367,13 @@ local plugins = {
 		},
 		config = true,
 	},
+
+	{
+		"mcauley-penney/visual-whitespace.nvim",
+		event = "ModeChanged",
+		commit = "979aea2ab9c62508c086e4d91a5c821df54168a8",
+		config = true,
+	},
 }
 
 return plugins
