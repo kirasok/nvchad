@@ -33,6 +33,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"cssls",
+	"lua_ls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -41,6 +42,14 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.lua_ls.setup({
+	settings = {
+		format = {
+			enable = false,
+		},
+	},
+})
 
 lspconfig.gopls.setup({
 	on_attach = on_attach,
