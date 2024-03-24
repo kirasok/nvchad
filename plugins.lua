@@ -374,6 +374,17 @@ local plugins = {
 		commit = "979aea2ab9c62508c086e4d91a5c821df54168a8",
 		config = true,
 	},
+
+	{
+		"utilyre/sentiment.nvim",
+		version = "*",
+		event = "LspAttach", -- keep for lazy loading
+		config = true,
+		init = function()
+			-- `matchparen.vim` needs to be disabled manually in case of lazy loading
+			vim.g.loaded_matchparen = 1
+		end,
+	},
 }
 
 return plugins
