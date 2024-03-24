@@ -347,15 +347,8 @@ local plugins = {
 	},
 
 	{
-		"HiPhish/nvim-ts-rainbow2",
+		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		event = "BufRead",
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup({
-				rainbow = {
-					enable = true,
-				},
-			})
-		end,
 	},
 
 	{
