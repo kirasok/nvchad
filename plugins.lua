@@ -422,6 +422,17 @@ local plugins = {
 		},
 		config = true,
 	},
+
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		event = "LspAttach",
+		config = function(_, opts)
+			require("lsp_lines").setup()
+			vim.diagnostic.config({
+				virtual_text = false,
+			})
+		end,
+	},
 }
 
 return plugins
