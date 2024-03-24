@@ -153,10 +153,8 @@ local plugins = {
 	{
 		-- Print function signature in popup window
 		"ray-x/lsp_signature.nvim",
-		event = "BufRead",
-		config = function()
-			require("lsp_signature").on_attach()
-		end,
+		event = "LspAttach",
+		config = true,
 	},
 
 	{
