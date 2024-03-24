@@ -433,6 +433,18 @@ local plugins = {
 			})
 		end,
 	},
+
+	{
+		"kosayoda/nvim-lightbulb",
+		event = "LspAttach",
+		opts = {
+			autocmd = { enabled = true },
+			ignore = {
+				ft = { "dart" },
+			},
+		},
+		config = true,
+	},
 }
 
 return plugins
