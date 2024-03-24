@@ -443,6 +443,62 @@ local plugins = {
 		},
 		config = true,
 	},
+
+	{
+		"hedyhli/outline.nvim",
+		cmd = { "Outline", "OutlineOpen" },
+		keys = { -- Example mapping to toggle outline
+			{ "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		},
+		opts = {
+			outline_window = {
+				show_cursorline = true,
+				hide_cursor = true,
+			},
+			guides = {
+				enabled = false,
+			},
+			preview_window = {
+				auto_preview = true,
+			},
+			symbols = {
+				icons = {
+					File = { icon = "󰈔 ", hl = "Identifier" },
+					Module = { icon = "󰆧 ", hl = "Include" },
+					Namespace = { icon = "󰅪 ", hl = "Include" },
+					Package = { icon = "󰏗 ", hl = "Include" },
+					Class = { icon = " ", hl = "Type" },
+					Method = { icon = "ƒ", hl = "Function" },
+					Property = { icon = " ", hl = "Identifier" },
+					Field = { icon = "󰆨 ", hl = "Identifier" },
+					Constructor = { icon = " ", hl = "Special" },
+					Enum = { icon = " ", hl = "Type" },
+					Interface = { icon = "󰜰 ", hl = "Type" },
+					Function = { icon = "", hl = "Function" },
+					Variable = { icon = " ", hl = "Constant" },
+					Constant = { icon = " ", hl = "Constant" },
+					String = { icon = " ", hl = "String" },
+					Number = { icon = "#", hl = "Number" },
+					Boolean = { icon = "⊨", hl = "Boolean" },
+					Array = { icon = "󰅪 ", hl = "Constant" },
+					Object = { icon = "⦿ ", hl = "Type" },
+					Key = { icon = "🔐", hl = "Type" },
+					Null = { icon = "NULL", hl = "Type" },
+					EnumMember = { icon = " ", hl = "Identifier" },
+					Struct = { icon = " ", hl = "Structure" },
+					Event = { icon = "", hl = "Type" },
+					Operator = { icon = "+", hl = "Identifier" },
+					TypeParameter = { icon = " ", hl = "Identifier" },
+					Component = { icon = "󰅴 ", hl = "Function" },
+					Fragment = { icon = "󰅴 ", hl = "Constant" },
+					TypeAlias = { icon = " ", hl = "Type" },
+					Parameter = { icon = " ", hl = "Identifier" },
+					StaticMethod = { icon = " ", hl = "Function" },
+					Macro = { icon = " ", hl = "Function" },
+				},
+			},
+		},
+	},
 }
 
 return plugins
