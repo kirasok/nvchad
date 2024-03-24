@@ -378,6 +378,27 @@ local plugins = {
 			vim.g.loaded_matchparen = 1
 		end,
 	},
+
+	{
+		"luckasRanarison/clear-action.nvim",
+		event = "LspAttach",
+		opts = {
+			signs = {
+				icons = {
+					quickfix = "🔧",
+					refactor = "💡",
+					source = "🔗",
+					combined = "💡", -- used when combine is set to true or as a fallback when there is no action kind
+				},
+			},
+			popup = {
+				hide_cursor = true,
+			},
+			mappings = {
+				code_action = "fa",
+			},
+		},
+	},
 }
 
 return plugins
