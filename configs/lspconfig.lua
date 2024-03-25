@@ -34,6 +34,7 @@ local servers = {
 	"jsonls",
 	"cssls",
 	"lua_ls",
+	"tsserver",
 }
 
 for _, lsp in ipairs(servers) do
