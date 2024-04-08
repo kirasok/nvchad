@@ -512,6 +512,7 @@ local plugins = {
 		opts = {
 			markdown = {
 				fat_headlines = false,
+				bullets = { "◉", "󰻃", "○", "✿" },
 			},
 		},
 		config = function(_, opts)
