@@ -505,6 +505,23 @@ local plugins = {
 		event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. WARN: On 0.10 use 'LspAttach'
 		config = true,
 	},
+
+	{
+		"lukas-reineke/headlines.nvim",
+		ft = { "markdown", "org", "norg" },
+		opts = {
+			markdown = {
+				fat_headlines = false,
+			},
+		},
+		config = function(_, opts)
+			require("headlines").setup(opts)
+			vim.cmd([[hi Headline guibg=none]])
+			vim.cmd([[hi CodeBlock guibg=none]])
+			vim.cmd([[hi Dash guibg=none]])
+			vim.cmd([[hi Quote guibg=none]])
+		end,
+	},
 }
 
 return plugins
