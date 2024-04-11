@@ -523,6 +523,26 @@ local plugins = {
 			vim.cmd([[hi Quote guibg=none]])
 		end,
 	},
+
+	{
+		"kylechui/nvim-surround",
+		event = "BufRead",
+		config = true,
+	},
+
+	{
+		"roobert/surround-ui.nvim",
+    event = "BufRead",
+		dependencies = {
+			"kylechui/nvim-surround",
+			"folke/which-key.nvim",
+		},
+		config = function()
+			require("surround-ui").setup({
+				root_key = "S",
+			})
+		end,
+	},
 }
 
 return plugins
