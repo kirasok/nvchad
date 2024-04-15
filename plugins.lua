@@ -90,7 +90,7 @@ local plugins = {
 			vim.cmd([[set backupcopy=yes]])
 
 			local opts = { noremap = true, silent = true }
-			local keymap = vim.keymap.set()
+			local keymap = vim.keymap.set
 
 			local zk = require("zk")
 			local commands = require("zk.commands")
