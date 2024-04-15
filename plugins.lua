@@ -90,7 +90,7 @@ local plugins = {
 			vim.cmd([[set backupcopy=yes]])
 
 			local opts = { noremap = true, silent = true }
-			local keymap = vim.api.nvim_buf_set_keymap
+			local keymap = vim.keymap.set()
 
 			local zk = require("zk")
 			local commands = require("zk.commands")
@@ -167,7 +167,7 @@ local plugins = {
 				yankNameReplace(options, { title = "Zk Yank" })
 			end)
 
-			keymap(0, "v", "zi", "<Cmd>ZkYankNameReplace<CR>", opts)
+			keymap("v", "zi", "<Cmd>ZkYankNameReplace<CR>")
 		end,
 	},
 
