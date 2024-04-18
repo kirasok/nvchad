@@ -623,6 +623,29 @@ local plugins = {
 			})
 		end,
 	},
+
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1001, -- this plugin needs to run before anything else
+		opts = {
+			rocks = { "magick" },
+		},
+	},
+	{
+		"3rd/image.nvim",
+		ft = "markdown",
+		dependencies = { "luarocks.nvim" },
+		opts = {
+			integrations = {
+				markdown = {
+					download_remote_images = false,
+				},
+				neorg = {
+					download_remote_images = false,
+				},
+			},
+		},
+	},
 }
 
 return plugins
