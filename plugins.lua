@@ -82,14 +82,13 @@ local plugins = {
 
 	{
 		-- manage zettelkasten
-		"mickael-menu/zk-nvim",
+		"zk-org/zk-nvim",
 		ft = "markdown",
 		opts = require("configs.zk-nvim"),
 		config = function(_, opts)
 			require("zk").setup(opts)
 			vim.cmd([[set backupcopy=yes]])
 
-			local opts = { noremap = true, silent = true }
 			local keymap = vim.keymap.set
 
 			local zk = require("zk")
@@ -644,6 +643,52 @@ local plugins = {
 				neorg = {
 					download_remote_images = false,
 				},
+			},
+		},
+	},
+
+	{
+		"fbuchlak/telescope-directory.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"zk-org/zk-nvim",
+		},
+		-- @type telescope-directory.ExtensionConfig
+		opts = {
+			features = {
+				{
+					name = "print_directory",
+					callback = function(dirs)
+						require("zk.commands").get("ZkNew")({ dir = dirs[1], title = vim.fn.input("Enter title: ") })
+					end,
+				},
+			},
+		},
+		config = function(_, opts)
+			require("telescope-directory").setup(opts)
+		end,
+		keys = {
+			{
+				"<Leader>fd",
+				function()
+					require("telescope-directory").directory({
+						feature = "live_grep", -- "find_files"|"grep_string"|"live_grep"
+					})
+				end,
+				desc = "Select directory for Live Grep",
+			},
+			{
+				"<Leader>fe",
+				"<CMD>Telescope directory find_files<CR>", -- "find_files"|"grep_string"|"live_grep"
+				desc = "Select directory for Find Files",
+			},
+			{
+				"zn",
+				function()
+					require("telescope-directory").directory({ feature = "print_directory" })
+				end,
+				desc = "zk: new note",
 			},
 		},
 	},
