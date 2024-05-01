@@ -187,7 +187,6 @@ local plugins = {
 		"folke/todo-comments.nvim",
 		event = "BufRead",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true,
 	},
 
 	{
@@ -195,7 +194,6 @@ local plugins = {
 		"ethanholz/nvim-lastplace",
 		lazy = false,
 		opts = require("configs.nvim-lastplace"),
-		config = true,
 	},
 
 	{
@@ -217,7 +215,6 @@ local plugins = {
 			"vue",
 			"xml",
 		},
-		config = true,
 	},
 
 	{
@@ -233,7 +230,6 @@ local plugins = {
 		-- Print function signature in popup window
 		"ray-x/lsp_signature.nvim",
 		event = "LspAttach",
-		config = true,
 	},
 
 	{
@@ -269,7 +265,6 @@ local plugins = {
 		ft = { "markdown" },
 		cmd = { "PasteImg" },
 		opts = require("configs.clipboard-image"),
-		config = true,
 	},
 
 	{
@@ -298,13 +293,11 @@ local plugins = {
 	{
 		"tzachar/highlight-undo.nvim",
 		event = "BufRead",
-		config = true,
 	},
 
 	{
 		"max397574/better-escape.nvim",
 		event = "InsertEnter",
-		config = true,
 	},
 
 	{
@@ -313,7 +306,6 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		event = "BufRead",
-		config = true,
 	},
 
 	{
@@ -330,14 +322,12 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		ft = "qf",
-		config = true,
 	},
 
 	{
 		"gbprod/yanky.nvim",
 		event = "BufRead",
 		opts = require("configs.yanky"),
-		config = true,
 	},
 
 	{
@@ -356,13 +346,11 @@ local plugins = {
 	{
 		"m4xshen/smartcolumn.nvim",
 		event = "BufRead",
-		config = true,
 	},
 
 	{
 		"RaafatTurki/hex.nvim",
 		event = "BufRead",
-		config = true,
 	},
 
 	{
@@ -387,7 +375,6 @@ local plugins = {
 		"calops/hmts.nvim",
 		ft = "nix",
 		version = "*",
-		config = true,
 	},
 
 	{
@@ -407,7 +394,6 @@ local plugins = {
 		opts = {
 			lang = "python3",
 		},
-		config = true,
 	},
 
 	{
@@ -420,7 +406,6 @@ local plugins = {
 				off = { "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdlineEnter" },
 			},
 		},
-		config = true,
 	},
 
 	{
@@ -435,14 +420,12 @@ local plugins = {
 			"nvim-lua/plenary.nvim",
 			"stevearc/dressing.nvim", -- optional for vim.ui.select
 		},
-		config = true,
 	},
 
 	{
 		"mcauley-penney/visual-whitespace.nvim",
 		event = "ModeChanged",
 		commit = "979aea2ab9c62508c086e4d91a5c821df54168a8",
-		config = true,
 	},
 
 	{
@@ -497,7 +480,6 @@ local plugins = {
 		opts = {
 			input_buffer_type = "dressing",
 		},
-		config = true,
 	},
 
 	{
@@ -521,7 +503,6 @@ local plugins = {
 				ft = { "dart" },
 			},
 		},
-		config = true,
 	},
 
 	{
@@ -583,7 +564,6 @@ local plugins = {
 	{
 		"Wansmer/symbol-usage.nvim",
 		event = "BufReadPre", -- need run before LspAttach if you use nvim 0.9. WARN: On 0.10 use 'LspAttach'
-		config = true,
 	},
 
 	{
@@ -607,7 +587,6 @@ local plugins = {
 	{
 		"kylechui/nvim-surround",
 		event = "BufRead",
-		config = true,
 	},
 
 	{
