@@ -672,6 +672,57 @@ local plugins = {
 			},
 		},
 	},
+
+	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewFileHistory", "DiffviewOpen" },
+		keys = {
+			{
+				"<leader>gd",
+				function()
+					local view = require("diffview.lib").get_current_view()
+					if view then
+						-- Current tabpage is a Diffview; close it
+						vim.cmd.DiffviewClose()
+					else
+						-- No open Diffview exists: open a new one
+						vim.cmd.DiffviewOpen()
+					end
+				end,
+				desc = "Diffview",
+			},
+		},
+		opts = {
+			default_args = {
+				DiffviewOpen = { "--imply-local" },
+			},
+		},
+	},
+	{
+		"NeogitOrg/neogit",
+		cmd = { "Neogit" },
+		keys = {
+			{ "<leader>go", "<cmd>Neogit<cr>", desc = "Neogit" },
+		},
+		opts = {
+			integrations = {
+				-- If enabled, use telescope for menu selection rather than vim.ui.select.
+				-- Allows multi-select and some things that vim.ui.select doesn't.
+				telescope = true,
+				-- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `diffview`.
+				-- The diffview integration enables the diff popup.
+				--
+				-- Requires you to have `sindrets/diffview.nvim` installed.
+				diffview = true,
+			},
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+		config = true,
+	},
 }
 
 return plugins
