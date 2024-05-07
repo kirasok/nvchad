@@ -237,6 +237,59 @@ local plugins = {
 				mode = "v",
 				desc = "Insert link on VISUAL",
 			},
+			{
+				"zp",
+				function()
+					require("zk").new({ title = vim.fn.input("title: "), dir = "projects" })
+				end,
+				desc = "zk: new project",
+			},
+			{
+				"zz",
+				function()
+					require("zk").edit({ sort = { "modified" } })
+				end,
+				desc = "zk: open note",
+			},
+			{
+				"zp",
+				function()
+					require("zk").new({ title = vim.fn.input("title: "), dir = "projects", group = "projects" })
+				end,
+				desc = "zk: new project",
+			},
+			{ "zb", "<CMD>ZkBacklinks<CR>", desc = "zk: backlinks" },
+			{ "zn", ":'<,'>ZkNewFromTitleSelection<CR>", mode = "v", desc = "zk: new title from selection" },
+			{ "zl", "<CMD>ZkLinks<CR>", desc = "zk: links" },
+			{ "zt", "<CMD>ZkTags<CR>", desc = "zk: tags" },
+			{
+				"zdd",
+				function()
+					require("zk").new({ dir = "projects/journal/daily", group = "daily" })
+				end,
+				desc = "zk: new daily note",
+			},
+			{
+				"zdw",
+				function()
+					require("zk").new({ dir = "projects/journal/weekly", group = "weekly" })
+				end,
+				desc = "zk: new weekly note",
+			},
+			{
+				"zdm",
+				function()
+					require("zk").new({ dir = "projects/journal/monthly", group = "monthly" })
+				end,
+				desc = "zk: new monthly note",
+			},
+			{
+				"zdt",
+				function()
+					require("zk").new({ dir = "projects/journal/daily", group = "tomorrow" })
+				end,
+				desc = "zk: new daily note for tomorrow",
+			},
 		},
 	},
 
