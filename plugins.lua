@@ -99,7 +99,7 @@ local plugins = {
 							arrow_closed = "",
 						},
 						git = {
-							unstaged = "󰄱",
+							unstaged = "",
 							staged = "󰱒",
 							unmerged = "",
 							renamed = "➜",
