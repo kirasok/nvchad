@@ -906,7 +906,7 @@ local plugins = {
 	},
 	{
 		"quarto-dev/quarto-nvim",
-		lazy = ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
+		lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
 		enabled = false, -- FIX: doesn't work
 		dependencies = {
 			"jmbuhr/otter.nvim",
@@ -945,7 +945,7 @@ local plugins = {
 	{
 		"benlubas/molten-nvim",
 		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-		lazy = ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
+		lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
 		dependencies = {
 			"3rd/image.nvim",
 			{

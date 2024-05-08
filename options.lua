@@ -2,7 +2,7 @@ require("nvchad.options")
 
 -- add yours here!
 
-if ".ipynb" ~= string.sub(vim.fn.argv()[1], -6) then
+if vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6) then
 	vim.opt.conceallevel = 2
 else
 	-- enable python provider
