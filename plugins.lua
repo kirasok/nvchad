@@ -245,6 +245,13 @@ local plugins = {
 				desc = "zk: new project",
 			},
 			{
+				"zn",
+				function()
+					require("zk").new({ title = vim.fn.input("title: ") })
+				end,
+				desc = "zk: new note",
+			},
+			{
 				"zz",
 				function()
 					require("zk").edit({ sort = { "modified" } })
@@ -794,11 +801,11 @@ local plugins = {
 				desc = "Select directory for Find Files",
 			},
 			{
-				"zn",
+				"zN",
 				function()
 					require("telescope-directory").directory({ feature = "print_directory" })
 				end,
-				desc = "zk: new note",
+				desc = "zk: new note in folder",
 			},
 		},
 	},
