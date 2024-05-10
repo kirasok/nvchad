@@ -161,7 +161,7 @@ local plugins = {
 		keys = {
 			{
 				"zi",
-				function()
+				function(options)
 					local zk = require("zk")
 
 					local function tbl_length(T)
@@ -222,7 +222,7 @@ local plugins = {
 							for _, note in ipairs(notes) do
 								local nline = line:sub(0, pos - #selected)
 									.. "[["
-									.. note.path:match("^.+/(.+)$"):sub(1, -4)
+									.. note.path:match("/?([^/]+).md$")
 									.. "|"
 									.. selected
 									.. "]]"
@@ -232,7 +232,7 @@ local plugins = {
 						end)
 					end
 
-					yankNameReplace({}, { title = "Zk Yank" })
+					yankNameReplace(options, { title = "Zk Yank" })
 				end,
 				mode = "v",
 				desc = "Insert link on VISUAL",
