@@ -863,6 +863,16 @@ local plugins = {
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
+		opts = {
+			window = {
+				width = 75,
+				options = {
+					number = false,
+					relativenumber = false,
+					cursorline = false,
+				},
+			},
+		},
 		keys = {
 			{ "<leader>z", "<cmd>ZenMode<cr>", desc = "ZenMode" },
 		},
