@@ -733,37 +733,6 @@ local plugins = {
 			})
 		end,
 	},
-
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1001, -- this plugin needs to run before anything else
-		opts = {
-			rocks = { "magick" },
-		},
-	},
-	{
-		"3rd/image.nvim",
-		ft = "markdown",
-		dependencies = { "luarocks.nvim" },
-		opts = {
-			backend = "kitty",
-			max_height = 12, -- ^
-			max_width = 128,
-			max_height_window_percentage = math.huge, -- this is necessary for a good experience
-			max_width_window_percentage = math.huge,
-			window_overlap_clear_enabled = true,
-			window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-			integrations = {
-				markdown = {
-					download_remote_images = false,
-				},
-				neorg = {
-					download_remote_images = false,
-				},
-			},
-		},
-	},
-
 	{
 		"fbuchlak/telescope-directory.nvim",
 		dependencies = {
@@ -964,17 +933,14 @@ local plugins = {
 		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
 		lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
 		dependencies = {
-			"3rd/image.nvim",
 			{
 				"GCBallesteros/jupytext.nvim",
 				opts = { style = "markdown", output_extension = "md", force_ft = "markdown" },
 			},
-			config = true,
 		},
 		build = ":UpdateRemotePlugins",
 		init = function()
 			-- these are examples, not defaults. Please see the readme
-			vim.g.molten_image_provider = "image.nvim"
 			vim.g.molten_output_win_max_height = 20
 			vim.g.molten_virt_text_output = true
 			vim.g.molten_virt_lines_off_by_1 = true
