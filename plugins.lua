@@ -969,6 +969,16 @@ local plugins = {
 			},
 		},
 	},
+	{
+		"edluffy/specs.nvim",
+		event = "BufEnter",
+		opts = {
+			popup = {
+				inc_ms = 16,
+			},
+		},
+		config = true,
+	},
 }
 
 return plugins
