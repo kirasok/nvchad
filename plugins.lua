@@ -317,6 +317,7 @@ local plugins = {
 		"folke/todo-comments.nvim",
 		event = "BufRead",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		config = true,
 	},
 
 	{
@@ -389,12 +390,66 @@ local plugins = {
 	},
 
 	{
-		-- paste image from clipboard
-		-- WARN: use of fork until upstream fixes health
-		"kirasok/clipboard-image.nvim",
-		ft = { "markdown" },
-		cmd = { "PasteImg" },
-		opts = require("configs.clipboard-image"),
+		"kirasok/telescope-media-files.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {
+			filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "mkv", "svg" },
+		},
+		config = function(_, opts)
+			require("telescope").load_extension("media_files")
+			require("telescope").setup({
+				extensions = {
+					media_files = opts,
+				},
+			})
+		end,
+	},
+
+	{
+		"HakonHarnes/img-clip.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"kirasok/telescope-media-files.nvim",
+		},
+		opts = {
+			default = {
+				dir_path = "static",
+			},
+		},
+		keys = {
+			-- suggested keymap
+			{ "<leader>lp", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+			{
+				"<leader>lP",
+				function()
+					local telescope = require("telescope")
+					local actions = require("telescope.actions")
+					local action_state = require("telescope.actions.state")
+
+					-- telescope.extensions.media_files.media_files() -- TODO: doesn't work
+					telescope.extensions.media_files.media_files({
+						attach_mappings = function(_, map)
+							local function embed_image(prompt_bufnr)
+								local entry = action_state.get_selected_entry()
+								local filepath = entry[1]
+								actions.close(prompt_bufnr)
+
+								local img_clip = require("img-clip")
+								img_clip.paste_image(nil, filepath)
+							end
+
+							map("i", "<CR>", embed_image)
+							map("n", "<CR>", embed_image)
+
+							return true
+						end,
+					})
+				end,
+				desc = "Paste image from file",
+			},
+		},
 	},
 
 	{
