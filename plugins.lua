@@ -409,7 +409,7 @@ local plugins = {
 
 	{
 		"HakonHarnes/img-clip.nvim",
-		event = "VeryLazy",
+		cmd = "PasteImage",
 		dependencies = {
 			"kirasok/telescope-media-files.nvim",
 		},
