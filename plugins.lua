@@ -37,6 +37,7 @@ local plugins = {
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFileToggle" },
+		enabled = false,
 		opts = {
 			filters = {
 				dotfiles = false,
@@ -945,64 +946,103 @@ local plugins = {
 			require("ufo").setup(opts)
 		end,
 	},
-	{
-		"quarto-dev/quarto-nvim",
-		lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
-		enabled = false, -- FIX: doesn't work
-		dependencies = {
-			"jmbuhr/otter.nvim",
-		},
-		opts = {
-			lspFeatures = {
-				-- NOTE: put whatever languages you want here:
-				languages = { "python" },
-				chunks = "all",
-				diagnostics = {
-					enabled = true,
-					triggers = { "BufWritePost" },
-				},
-				completion = {
-					enabled = true,
-				},
-			},
-			keymap = {
-				-- NOTE: setup your own keymaps:
-				hover = "H",
-				definition = "gd",
-				rename = "<leader>rn",
-				references = "gr",
-				format = "<leader>gf",
-			},
-			codeRunner = {
-				enabled = true,
-				default_method = "molten",
-			},
-		},
-		config = function(_, opts)
-			require("quarto").setup(opts)
-			require("quarto").activate()
-		end,
-	},
-	{
-		"benlubas/molten-nvim",
-		version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-		lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
-		dependencies = {
-			{ "3rd/image.nvim" },
-			{
-				"GCBallesteros/jupytext.nvim",
-				opts = { style = "markdown", output_extension = "md", force_ft = "markdown" },
-			},
-		},
-		build = ":UpdateRemotePlugins",
-		init = function()
-			vim.g.molten_image_provider = "image.nvim"
-			-- these are examples, not defaults. Please see the readme
-			vim.g.molten_output_win_max_height = 20
-			vim.g.molten_virt_text_output = true
-			vim.g.molten_virt_lines_off_by_1 = true
-		end,
-	},
+	-- {
+	-- 	"quarto-dev/quarto-nvim",
+	-- 	enabled = false,
+	-- 	dependencies = {
+	-- 		{
+	-- 			"jmbuhr/otter.nvim",
+	-- 			dependencies = {
+	-- 				"hrsh7th/nvim-cmp",
+	-- 			},
+	-- 			config = function(_, opts)
+	-- 				require("otter").setup(opts)
+	-- 				local cmp = require("cmp")
+	-- 				local config = cmp.get_config()
+	-- 				table.insert(config.sources, {
+	-- 					name = "otter",
+	-- 				})
+	-- 				cmp.setup(config)
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	opts = {
+	-- 		lspFeatures = {
+	-- 			-- NOTE: put whatever languages you want here:
+	-- 			languages = { "python" },
+	-- 			chunks = "all",
+	-- 			diagnostics = {
+	-- 				enabled = true,
+	-- 				triggers = { "BufWritePost" },
+	-- 			},
+	-- 			completion = {
+	-- 				enabled = true,
+	-- 			},
+	-- 		},
+	-- 		keymap = {
+	-- 			-- NOTE: setup your own keymaps:
+	-- 			hover = "H",
+	-- 			definition = "gd",
+	-- 			rename = "<leader>rn",
+	-- 			references = "gr",
+	-- 			format = "<leader>gf",
+	-- 		},
+	-- 		codeRunner = {
+	-- 			enabled = true,
+	-- 			default_method = "molten",
+	-- 		},
+	-- 	},
+	-- 	keys = {
+	-- 		-- { mode = "n", "<localleader>rc", require("quarto.runner").run_cell, desc = "run cell" },
+	-- 		-- { mode = "n", "<localleader>ra", require("quarto.runner").run_above, desc = "run cell and above" },
+	-- 		-- { mode = "n", "<localleader>rA", require("quarto.runner").run_all, desc = "run all cells" },
+	-- 		-- { mode = "n", "<localleader>rl", require("quarto.runner").run_line, desc = "run line" },
+	-- 		-- { mode = "v", "<localleader>r", require("quarto.runner").run_range, desc = "run visual range" },
+	-- 		-- {
+	-- 		-- 	mode = "n",
+	-- 		-- 	"<localleader>RA",
+	-- 		-- 	function()
+	-- 		-- 		require("quarto.runner").run_all(true)
+	-- 		-- 	end,
+	-- 		-- 	desc = "run all cells of all languages",
+	-- 		-- },
+	-- 	},
+	-- 	config = function(_, opts)
+	-- 		local runner = require("quarto.runner")
+	-- 		vim.keymap.set("n", "<localleader>rc", runner.run_cell, { desc = "run cell" })
+	-- 		vim.keymap.set("n", "<localleader>ra", runner.run_above, { desc = "run cell and above" })
+	-- 		vim.keymap.set("n", "<localleader>rA", runner.run_all, { desc = "run all cells" })
+	-- 		vim.keymap.set("n", "<localleader>rl", runner.run_line, { desc = "run line" })
+	-- 		vim.keymap.set("v", "<localleader>r", runner.run_range, { desc = "run visual range" })
+	-- 		vim.keymap.set("n", "<localleader>RA", function()
+	-- 			runner.run_all(true)
+	-- 		end, { desc = "run all cells of all languages" })
+	-- 		require("quarto").setup(opts)
+	-- 		require("quarto").activate()
+	-- 	end,
+	-- },
+	-- {
+	-- 	"benlubas/molten-nvim",
+	-- 	enabled = false,
+	-- 	version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+	-- 	lazy = vim.fn.argv()[1] ~= nil and ".ipynb" ~= string.sub(vim.fn.argv()[1], -6),
+	-- 	dependencies = {
+	-- 		{ "3rd/image.nvim" },
+	-- 		{
+	-- 			"GCBallesteros/jupytext.nvim",
+	-- 			opts = { style = "markdown", output_extension = "md", force_ft = "markdown" },
+	-- 		},
+	-- 		{ "quarto-dev/quarto-nvim" },
+	-- 	},
+	-- 	build = ":UpdateRemotePlugins",
+	-- 	init = function()
+	-- 		vim.g.molten_image_provider = "image.nvim"
+	-- 		-- these are examples, not defaults. Please see the readme
+	-- 		vim.g.molten_output_win_max_height = 20
+	-- 		vim.g.molten_virt_text_output = true
+	-- 		vim.g.molten_virt_lines_off_by_1 = true
+	-- 	end,
+	-- },
 	{
 		"chrisgrieser/nvim-spider",
 		keys = {
@@ -1036,7 +1076,6 @@ local plugins = {
 		},
 		config = true,
 	},
-
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1001, -- this plugin needs to run before anything else
@@ -1063,6 +1102,24 @@ local plugins = {
 					download_remote_images = false,
 				},
 			},
+		},
+	},
+	{
+		"mikavilpas/yazi.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "VeryLazy",
+		keys = {
+			{
+				-- Open in the current working directory
+				"<leader>e",
+				function()
+					require("yazi").yazi(nil, vim.fn.getcwd())
+				end,
+				desc = "Open the file manager",
+			},
+		},
+		opts = {
+			open_for_directories = false, -- WARN: doesn't open file on selection if starting from directory
 		},
 	},
 }

@@ -39,10 +39,6 @@ map("n", "fR", function()
 	vim.lsp.buf.references()
 end, { desc = "LSP references" })
 
--- nvimtree
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus NvimTree" })
-map("n", "<C-n>", "<cmd> NvimTreeFindFileToggle <CR>", { desc = "Toggle NvimTree" })
-
 -- telescope
 nomap("n", "<leader>cm")
 nomap("n", "<leader>gt")
