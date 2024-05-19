@@ -1042,8 +1042,9 @@ local plugins = {
 		},
 	},
 	{
-		"edluffy/specs.nvim",
+		"cxwx/specs.nvim",
 		event = "BufEnter",
+		commit = "dd82496",
 		opts = {
 			popup = {
 				inc_ms = 16,
