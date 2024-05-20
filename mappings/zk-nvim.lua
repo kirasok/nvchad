@@ -142,6 +142,6 @@ return {
 		function()
 			require("telescope-directory").directory({ feature = "print_directory" })
 		end,
-		dasc = "zk new note in folder",
+		desc = "zk new note in folder",
 	},
 }
