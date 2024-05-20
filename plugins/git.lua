@@ -13,22 +13,7 @@ local plugins = {
 	{
 		"sindrets/diffview.nvim",
 		cmd = { "DiffviewFileHistory", "DiffviewOpen" },
-		keys = {
-			{
-				"<leader>gd",
-				function()
-					local view = require("diffview.lib").get_current_view()
-					if view then
-						-- Current tabpage is a Diffview; close it
-						vim.cmd.DiffviewClose()
-					else
-						-- No open Diffview exists: open a new one
-						vim.cmd.DiffviewOpen()
-					end
-				end,
-				desc = "Diffview",
-			},
-		},
+		keys = require("mappings.diffview-nvim"),
 		opts = {
 			default_args = {
 				DiffviewOpen = { "--imply-local" },
@@ -39,9 +24,7 @@ local plugins = {
 	{
 		"NeogitOrg/neogit",
 		cmd = { "Neogit" },
-		keys = {
-			{ "<leader>go", "<cmd>Neogit<cr>", desc = "Neogit" },
-		},
+		keys = require("mappings.neogit"),
 		opts = {
 			integrations = {
 				telescope = true,

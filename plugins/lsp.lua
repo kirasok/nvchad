@@ -36,7 +36,6 @@ local servers = {
 	"html",
 	"jsonls",
 	"cssls",
-	"lua_ls",
 	"tsserver",
 }
 
@@ -66,9 +65,11 @@ local plugins = {
 						lsp_fallback = true,
 					},
 				},
+				keys = require("mappings.conform-nvim"),
 				config = true,
 			},
 		},
+		keys = require("mappings.lspconfig"),
 		config = function()
 			require("nvchad.configs.lspconfig")
 			local nvchad_on_attach = require("nvchad.configs.lspconfig").on_attach
@@ -128,6 +129,19 @@ local plugins = {
 							onOpenAndSave = true,
 						},
 						formatterLineLength = 0,
+					},
+				},
+			})
+
+			lspconfig.lua_ls.setup({
+				settings = {
+					format = {
+						enable = false,
+					},
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
 					},
 				},
 			})
@@ -215,6 +229,7 @@ local plugins = {
 		opts = {
 			input_buffer_type = "dressing",
 		},
+		keys = require("mappings.inc-rename-nvim"),
 	},
 
 	{
@@ -231,9 +246,7 @@ local plugins = {
 	{
 		"hedyhli/outline.nvim",
 		cmd = { "Outline", "OutlineOpen" },
-		keys = { -- Example mapping to toggle outline
-			{ "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-		},
+		keys = require("mappings.outline-nvim"),
 		opts = {
 			outline_window = {
 				show_cursorline = true,
@@ -286,7 +299,7 @@ local plugins = {
 
 	{
 		"Wansmer/symbol-usage.nvim",
-		event = "LspAttach", -- need run before LspAttach if you use nvim 0.9. WARN: On 0.10 use 'LspAttach'
+		event = "LspAttach",
 	},
 }
 
