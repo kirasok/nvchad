@@ -3,7 +3,7 @@ require("nvchad.mappings")
 local map = vim.keymap.set
 local nomap = vim.keymap.del
 
-map("i", "<C-l>", "<Esc>[s1z=`]a", { desc = "Fix spell" })
+map("i", "<C-l>", "<Esc>[s1z=`]a", { desc = "spell fix last mistake" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 -- lspconfig
@@ -22,3 +22,5 @@ nomap("n", "<leader>wk")
 nomap("n", "<leader>wK")
 nomap("n", "<leader>ch")
 nomap("n", "<leader>ma")
+nomap("n", "<C-n>")
+nomap("n", "<leader>n")

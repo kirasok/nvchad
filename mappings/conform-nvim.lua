@@ -5,6 +5,6 @@ return {
 			require("conform").format({ async = true, lsp_fallback = true }, nil)
 		end,
 		mode = "n",
-		desc = "conform formatting",
+		desc = "LSP formatting",
 	},
 }

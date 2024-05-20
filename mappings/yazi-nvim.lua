@@ -5,6 +5,6 @@ return {
 		function()
 			require("yazi").yazi()
 		end,
-		desc = "Open the file manager",
+		desc = "yazi open",
 	},
 }

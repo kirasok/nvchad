@@ -1,3 +1,3 @@
 return {
-	{ "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+	{ "<leader>o", "<cmd>Outline<CR>", desc = "outline toggle" },
 }

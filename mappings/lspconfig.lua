@@ -3,7 +3,7 @@ return {
 		"fF",
 		vim.diagnostic.open_float,
 		mode = "n",
-		desc = "Lsp floating diagnostics",
+		desc = "LSP floating diagnostics",
 	},
 	{
 		"fD",
