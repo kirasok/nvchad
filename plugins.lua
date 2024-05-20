@@ -12,9 +12,6 @@ local plugins = {
 			require("which-key").register({
 				f = { name = "find" },
 				g = { name = "git" },
-				i = { name = "info" },
-				w = { name = "workspace" },
-				n = { name = "neogen" },
 			}, { prefix = "<leader>" })
 		end,
 	},
@@ -31,7 +28,59 @@ local plugins = {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = require("configs.nvim-treesitter"),
+		opts = {
+			ensure_installed = {
+				"bash",
+				"bibtex",
+				"c",
+				"cmake",
+				"cooklang",
+				"cpp",
+				"css",
+				"dart",
+				"dockerfile",
+				"git_config",
+				"git_rebase",
+				"gitattributes",
+				"gitcommit",
+				"gitignore",
+				"go",
+				"gomod",
+				"haskell",
+				"html",
+				"http",
+				"ini",
+				"java",
+				"javascript",
+				"jq",
+				"jsdoc",
+				"json",
+				"json5",
+				"jsonc",
+				"kotlin",
+				"latex",
+				"ledger",
+				"lua",
+				"make",
+				"markdown",
+				"markdown_inline",
+				"mermaid",
+				"nix",
+				"norg",
+				"python",
+				"query",
+				"rasi",
+				"regex",
+				"rust",
+				"sql",
+				"toml",
+				"tsx",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"yaml",
+			},
+		},
 	},
 
 	{
@@ -127,26 +176,157 @@ local plugins = {
 			{
 				"mfussenegger/nvim-lint",
 				config = function(_, opts)
-					require("configs.nvim-lint")
+					require("lint").linters_by_ft = {
+						javascript = { "deno" },
+						javascriptreact = { "deno" },
+						typescript = { "deno" },
+						typescriptreact = { "deno" },
+						zsh = { "zsh" },
+						yaml = { "actionlint" },
+						json = { "jsonlint" },
+						python = { "pylint", "pydocstyle", "pycodestyle" },
+					}
+
+					vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+						callback = function()
+							require("lint").try_lint()
+						end,
+					})
 				end,
 			},
 			{
 				"stevearc/conform.nvim",
-				opts = require("configs.conform"),
+				opts = {
+					formatters_by_ft = {
+						lua = { "stylua" },
+						toml = { "taplo" },
+						yaml = { "yamlfmt" },
+						sh = { "shfmt" },
+						zsh = { "shfmt" },
+						markdown = { { "prettierd", "prettier" } },
+						-- Conform will run multiple formatters sequentially
+						python = { "isort", "black" },
+						-- Use a sub-list to run only the first available formatter
+						javascript = { { "prettierd", "prettier" } },
+					},
+					format_on_save = {
+						-- These options will be passed to conform.format()
+						timeout_ms = 500,
+						lsp_fallback = true,
+					},
+				},
 				config = true,
 			},
 		},
 		config = function()
 			require("nvchad.configs.lspconfig")
-			require("configs.lspconfig")
+			local nvchad_on_attach = require("nvchad.configs.lspconfig").on_attach
+			local nvchad_capabilities = require("nvchad.configs.lspconfig").capabilities
+
+			local on_attach = function(client, bufnr)
+				nvchad_on_attach(client, bufnr)
+				client.server_capabilities.documentFormattingProvider = true
+				client.server_capabilities.documentRangeFormattingProvider = true
+				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+				if client.supports_method("textDocument/formatting") then
+					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						group = augroup,
+						buffer = bufnr,
+						callback = function()
+							vim.lsp.buf.format({ async = false })
+						end,
+					})
+				end
+			end
+			local capabilities = nvchad_capabilities
+
+			local lspconfig = require("lspconfig")
+
+			-- if you just want default config for the servers then put them in a table
+			local servers = {
+				"rust_analyzer",
+				"bashls",
+				"taplo",
+				"yamlls",
+				"jedi_language_server",
+				"hls",
+				"clangd",
+				"html",
+				"jsonls",
+				"cssls",
+				"lua_ls",
+				"tsserver",
+			}
+
+			for _, lsp in ipairs(servers) do
+				lspconfig[lsp].setup({
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end
+
+			lspconfig.lua_ls.setup({
+				settings = {
+					format = {
+						enable = false,
+					},
+				},
+			})
+
+			lspconfig.gopls.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					gopls = {
+						gofumpt = true,
+					},
+				},
+			})
+
+			lspconfig.texlab.setup({
+				settings = {
+					texlab = {
+						build = {
+							executable = "latexmk",
+							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+							onSave = true,
+							forwardSearchAfter = true,
+						},
+						forwardSearch = {
+							executable = "zathura",
+							args = { "--synctex-forward", "%l:1:%f", "%p" },
+						},
+						chktex = {
+							onOpenAndSave = true,
+						},
+						formatterLineLength = 0,
+					},
+				},
+			})
 		end,
 	},
 
 	{
 		"L3MON4D3/LuaSnip",
 		config = function(_, opts)
+			-- highlight luasnip nodes
+			local types = require("luasnip.util.types")
+			require("luasnip").config.setup({
+				ext_opts = {
+					[types.choiceNode] = {
+						active = {
+							virt_text = { { "●", "GruvboxOrange" } },
+						},
+					},
+					[types.insertNode] = {
+						active = {
+							virt_text = { { "●", "GruvboxBlue" } },
+						},
+					},
+				},
+			})
 			require("nvchad.configs.luasnip")
-			require("configs.luasnip")
 		end,
 	},
 
@@ -154,7 +334,13 @@ local plugins = {
 		-- manage zettelkasten
 		"zk-org/zk-nvim",
 		ft = "markdown",
-		opts = require("configs.zk-nvim"),
+		opts = {
+			picker = "telescope",
+			auto_attach = {
+				enabled = true,
+				filetypes = { "markdown" },
+			},
+		},
 		config = function(_, opts)
 			require("zk").setup(opts)
 			vim.cmd([[set backupcopy=yes]])
@@ -304,7 +490,24 @@ local plugins = {
 	{
 		"NvChad/nvim-colorizer.lua",
 		ft = { "javascript", "css", "toml", "yaml", "scss" },
-		opts = require("configs.nvim-colorizer"),
+		opts = {
+			user_default_options = {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				names = true, -- "Name" codes like Blue or blue
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				AARRGGBB = true, -- 0xAARRGGBB hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+				-- Available modes for `mode`: foreground, background,  virtualtext
+				mode = "background", -- Set the display mode.
+				-- Available methods are false / true / "normal" / "lsp" / "both"
+				-- True is same as normal
+				tailwind = true, -- Enable tailwind colors
+			},
+		},
 		config = function(_, opts)
 			require("colorizer").setup(opts)
 			-- execute colorizer as soon as possible
@@ -325,7 +528,16 @@ local plugins = {
 		-- open fields in the last place you left
 		"ethanholz/nvim-lastplace",
 		lazy = false,
-		opts = require("configs.nvim-lastplace"),
+		opts = {
+			lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+			lastplace_ignore_filetype = {
+				"gitcommit",
+				"gitrebase",
+				"svn",
+				"hgcommit",
+			},
+			lastplace_open_folds = true,
+		},
 	},
 
 	{
@@ -347,6 +559,7 @@ local plugins = {
 			"vue",
 			"xml",
 		},
+		config = true,
 	},
 
 	{
@@ -515,7 +728,11 @@ local plugins = {
 	{
 		"gbprod/yanky.nvim",
 		event = "BufRead",
-		opts = require("configs.yanky"),
+		opts = {
+			highlight = {
+				timer = 250,
+			},
+		},
 	},
 
 	{
@@ -544,6 +761,7 @@ local plugins = {
 	{
 		"gelguy/wilder.nvim",
 		event = "CmdlineEnter",
+		build = ":UpdateRemotePlugins",
 		opts = { modes = { ":", "/", "?" } },
 		config = function(_, opts)
 			local wilder = require("wilder")
@@ -1089,13 +1307,13 @@ local plugins = {
 				-- Open in the current working directory
 				"<leader>e",
 				function()
-					require("yazi").yazi(nil, vim.fn.getcwd())
+					require("yazi").yazi()
 				end,
 				desc = "Open the file manager",
 			},
 		},
 		opts = {
-			open_for_directories = false, -- WARN: doesn't open file on selection if starting from directory
+			open_for_directories = false,
 		},
 	},
 	{
