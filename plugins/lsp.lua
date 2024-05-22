@@ -72,11 +72,8 @@ local plugins = {
 		keys = require("mappings.lspconfig"),
 		config = function()
 			require("nvchad.configs.lspconfig")
-			local nvchad_on_attach = require("nvchad.configs.lspconfig").on_attach
-			local nvchad_capabilities = require("nvchad.configs.lspconfig").capabilities
-
 			local on_attach = function(client, bufnr)
-				nvchad_on_attach(client, bufnr)
+				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
 				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -91,7 +88,7 @@ local plugins = {
 					})
 				end
 			end
-			local capabilities = nvchad_capabilities
+			local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 			local lspconfig = require("lspconfig")
 
