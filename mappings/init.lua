@@ -9,18 +9,6 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 -- lspconfig
 nomap("n", "<leader>fm")
 nomap("n", "<leader>ds")
-map("n", "<leader>ca", "<ESC>") -- code action
-nomap("n", "<leader>ca") -- code action
-map("n", "<leader>ra", "<ESC>") -- NvRenamer
-nomap("n", "<leader>ra") -- NvRenamer
-map("n", "<leader>sh", "<ESC>") -- show signature help
-nomap("n", "<leader>sh") -- show signature help
-map("n", "<leader>wa", "<ESC>") -- add workspace
-nomap("n", "<leader>wa") -- add workspace
-map("n", "<leader>wr", "<ESC>") -- remove workspace
-nomap("n", "<leader>wr") -- remove workspace
-map("n", "<leader>wl", "<ESC>") -- list workspaces
-nomap("n", "<leader>wl") -- list workspaces
 
 -- telescope
 nomap("n", "<leader>cm")
