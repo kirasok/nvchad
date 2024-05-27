@@ -64,6 +64,30 @@ local plugins = {
 		event = "VeryLazy",
 		keys = require("mappings.yazi-nvim"),
 	},
+
+	{
+		"johmsalas/text-case.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function(_, opts)
+			require("textcase").setup(opts)
+			require("telescope").load_extension("textcase")
+		end,
+		keys = {
+			{
+				"<space>fc",
+				"<cmd>TextCaseOpenTelescope<CR>",
+				mode = { "n", "x" },
+				desc = "telescope convert text case",
+			},
+		},
+		cmd = {
+			"Subs",
+			"TextCaseOpenTelescope",
+			"TextCaseOpenTelescopeQuickChange",
+			"TextCaseOpenTelescopeLSPChange",
+			"TextCaseStartReplacingCommand",
+		},
+	},
 }
 
 return plugins
