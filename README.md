@@ -1,15 +1,17 @@
-# nvchad
+# NvChad
 
-my config for [nvchad](https://github.com/NvChad/NvChad)
+My config for [NvChad](https://github.com/NvChad/NvChad)
 
-## installation
+## Installation
+
+Install `NvChad`
 
 ```bash
-git clone https://github.com/kirasok/nvchad ~/.config/nvim/lua/custom
+git clone https://github.com/kirasok/nvchad ~/.config/nvim/lua
 ```
 
-## update
+## Update
 
 ```bash
-cd ~/.config/nvim/lua/custom && git pull
+cd ~/.config/nvim/lua && git pull
 ```
