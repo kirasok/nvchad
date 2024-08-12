@@ -4,6 +4,8 @@ local map = vim.keymap.set
 local nomap = vim.keymap.del
 
 map("i", "<C-l>", "<Esc>[s1z=`]a", { desc = "spell fix last mistake" })
+map("n", "j", "gj", { desc = "move 1 line down" })
+map("n", "k", "gk", { desc = "move 1 line up" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
 -- lspconfig
