@@ -5,13 +5,14 @@ local plugins = {
 		config = function(_, opts)
 			-- default config function's stuff
 			dofile(vim.g.base46_cache .. "whichkey")
-			require("which-key").setup(opts)
+			local wk = require("which-key")
+			wk.setup(opts)
 
 			-- your custom stuff
-			require("which-key").register({
-				f = { name = "find" },
-				g = { name = "git" },
-			}, { prefix = "<leader>" })
+			wk.add({
+				{ "<leader>f", group = "find" },
+				{ "<leader>g", group = "git" },
+			})
 		end,
 	},
 
