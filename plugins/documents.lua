@@ -115,6 +115,7 @@ local plugins = {
 	{
 		"lukas-reineke/headlines.nvim",
 		ft = { "markdown", "org", "norg" },
+		enabled = false,
 		opts = {
 			markdown = {
 				fat_headlines = false,
