@@ -16,11 +16,11 @@ local formatters = {
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
 	zsh = { "shfmt" },
-	markdown = { { "prettierd", "prettier" } },
+	markdown = { "prettierd", "prettier", stop_after_first = true },
 	-- Conform will run multiple formatters sequentially
 	python = { "isort", "black" },
 	-- Use a sub-list to run only the first available formatter
-	javascript = { { "prettierd", "prettier" } },
+	javascript = { "prettierd", "prettier", stop_after_first = true },
 }
 
 -- if you just want default config for the servers then put them in a table
