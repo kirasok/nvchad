@@ -5,7 +5,12 @@ local plugins = {
 		-- know whom to blame for this code
 		"f-person/git-blame.nvim",
 		event = "BufRead",
-		config = function()
+		opts = {
+			message_template = "<summary> • <date> • <author>",
+			date_format = "%r",
+		},
+		config = function(_, opts)
+			require("gitblame").setup(opts)
 			vim.cmd("highlight default link gitblame SpecialComment")
 		end,
 	},
