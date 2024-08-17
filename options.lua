@@ -13,3 +13,5 @@ vim.opt.conceallevel = 0
 vim.opt.spell = true
 vim.opt.spelllang = { "en", "ru" }
 vim.opt.scrolloff = 3
+
+vim.cmd([[match TermCursor /\s\{2,\}$/]]) -- at least 2 trailing spaces
