@@ -36,7 +36,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"cssls",
-	"tsserver",
+	"ts_ls",
 }
 
 local plugins = {
