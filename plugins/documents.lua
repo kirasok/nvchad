@@ -2,6 +2,13 @@
 local plugins = {
 
 	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+	},
+
+	{
 		-- manage zettelkasten
 		"zk-org/zk-nvim",
 		ft = "markdown",
