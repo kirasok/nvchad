@@ -16,6 +16,7 @@ local formatters = {
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
 	zsh = { "shfmt" },
+	nix = { "nixfmt" },
 	markdown = { "prettierd", "prettier", stop_after_first = true },
 	-- Conform will run multiple formatters sequentially
 	python = { "isort", "black" },
@@ -37,6 +38,7 @@ local servers = {
 	"jsonls",
 	"cssls",
 	"ts_ls",
+	"nil_ls",
 }
 
 local plugins = {
