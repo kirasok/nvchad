@@ -125,25 +125,6 @@ local plugins = {
 	},
 
 	{
-		"lukas-reineke/headlines.nvim",
-		ft = { "markdown", "org", "norg" },
-		enabled = false,
-		opts = {
-			markdown = {
-				fat_headlines = false,
-				bullets = { "◉", "󰻃", "○", "✿" },
-			},
-		},
-		config = function(_, opts)
-			require("headlines").setup(opts)
-			vim.cmd([[hi Headline guibg=none]])
-			vim.cmd([[hi CodeBlock guibg=none]])
-			vim.cmd([[hi Dash guibg=none]])
-			vim.cmd([[hi Quote guibg=none]])
-		end,
-	},
-
-	{
 		"quarto-dev/quarto-nvim",
 		ft = "quarto",
 		dependencies = {
