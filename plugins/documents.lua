@@ -7,6 +7,7 @@ local plugins = {
 		opts = {
 			sign = { enabled = false },
 			latex = { enabled = false },
+			indent = { enabled = true },
 		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 	},
