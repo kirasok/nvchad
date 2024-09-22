@@ -5,6 +5,7 @@ local plugins = {
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = "markdown",
 		opts = {
+			render_modes = { "n", "c", "i" },
 			sign = { enabled = false },
 			latex = { enabled = false },
 			indent = { enabled = true },
