@@ -4,7 +4,7 @@ local M = {}
 local highlights = require("highlights")
 
 M.ui = {
-	theme = "gruvchad",
+	theme = "rosepine",
 	theme_toggle = { "kanawaga", "papercolor-light" },
 	transparency = true,
 	lsp_semantic_tokens = true,
