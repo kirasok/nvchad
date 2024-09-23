@@ -2,15 +2,34 @@
 local plugins = {
 
 	{
-		"MeanderingProgrammer/render-markdown.nvim",
+		"kirasok/render-markdown.nvim",
 		ft = "markdown",
 		opts = {
 			render_modes = { "n", "c", "i" },
 			sign = { enabled = false },
 			latex = { enabled = false },
 			indent = { enabled = true },
+			-- link = {
+			-- 	wikilinkCallback = function(id)
+			-- 		local title = "empty"
+			-- 		require("zk.api").list(nil, { select = "title", hrefs = id })
+			-- 		return title
+			-- 	end,
+			-- },
 		},
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", "zk-org/zk-nvim" },
+	},
+
+	{
+		"SCJangra/table-nvim",
+		ft = "markdown",
+		opts = {
+			padd_column_separators = true, -- Insert a space around column separators.
+			mappings = { -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.
+				next = "<A-S-TAB>", -- Go to next cell.
+				prev = "<C-A-S-TAB>", -- Go to previous cell.
+			},
+		},
 	},
 
 	{
