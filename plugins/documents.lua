@@ -9,13 +9,9 @@ local plugins = {
 			sign = { enabled = false },
 			latex = { enabled = false },
 			indent = { enabled = true },
-			-- link = {
-			-- 	wikilinkCallback = function(id)
-			-- 		local title = "empty"
-			-- 		require("zk.api").list(nil, { select = "title", hrefs = id })
-			-- 		return title
-			-- 	end,
-			-- },
+			link = {
+				hyperlink = "",
+			},
 		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", "zk-org/zk-nvim" },
 	},
