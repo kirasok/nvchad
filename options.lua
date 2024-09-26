@@ -14,4 +14,6 @@ vim.opt.spell = true
 vim.opt.spelllang = { "en" }
 vim.opt.scrolloff = 3
 
+vim.g.editorconfig = true
+
 vim.cmd([[au FileType markdown match WildMenu /\s\{2,\}$/]]) -- at least 2 trailing spaces
