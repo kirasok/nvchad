@@ -17,13 +17,13 @@ local plugins = {
 	},
 
 	{
-		"SCJangra/table-nvim",
+		"kirasok/table-nvim",
 		ft = "markdown",
 		opts = {
 			padd_column_separators = true, -- Insert a space around column separators.
 			mappings = { -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.
-				next = "<A-S-TAB>", -- Go to next cell.
-				prev = "<C-A-S-TAB>", -- Go to previous cell.
+				next = "<leader><TAB>", -- Go to next cell.
+				prev = "<leader><S-TAB>", -- Go to previous cell.
 			},
 		},
 	},
@@ -136,80 +136,6 @@ local plugins = {
 				name = "emoji",
 			})
 			cmp.setup(config)
-		end,
-	},
-
-	{
-		"quarto-dev/quarto-nvim",
-		ft = "quarto",
-		dependencies = {
-			{
-				"jmbuhr/otter.nvim",
-				dependencies = {
-					"hrsh7th/nvim-cmp",
-					"neovim/nvim-lspconfig",
-					"nvim-treesitter/nvim-treesitter",
-				},
-				config = function(_, opts)
-					require("otter").setup(opts)
-					local cmp = require("cmp")
-					local config = cmp.get_config()
-					table.insert(config.sources, {
-						name = "otter",
-					})
-					cmp.setup(config)
-				end,
-			},
-			{
-				"benlubas/molten-nvim",
-				version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-				dependencies = {
-					{ "3rd/image.nvim" },
-					{
-						"GCBallesteros/jupytext.nvim",
-						opts = { style = "quarto", output_extension = "qmd", force_ft = "quarto" },
-					},
-				},
-				build = ":UpdateRemotePlugins",
-				init = function()
-					vim.g.molten_image_provider = "image.nvim"
-				end,
-			},
-			{ "folke/which-key.nvim" },
-		},
-		opts = {
-			lspFeatures = {
-				languages = { "python" },
-				chunks = "all",
-				diagnostics = {
-					enabled = true,
-					triggers = { "BufWritePost" },
-				},
-				completion = {
-					enabled = true,
-				},
-			},
-			keymap = false,
-			codeRunner = {
-				enabled = true,
-				default_method = "molten",
-				never_run = { "yaml" },
-			},
-		},
-		config = function(_, opts)
-			require("quarto").setup(opts)
-			require("quarto").activate()
-			require("which-key").register({ ["<leader>"] = {
-				r = {
-					name = "runner",
-				},
-			} })
-			local runner = require("quarto.runner")
-			vim.keymap.set("n", "<leader>rc", runner.run_cell, { desc = "run cell" })
-			vim.keymap.set("n", "<leader>ra", runner.run_above, { desc = "run cell and above" })
-			vim.keymap.set("n", "<leader>rA", runner.run_all, { desc = "run all cells" })
-			vim.keymap.set("n", "<leader>rl", runner.run_line, { desc = "run line" })
-			vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "run visual range" })
 		end,
 	},
 }
