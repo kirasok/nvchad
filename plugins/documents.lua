@@ -17,13 +17,13 @@ local plugins = {
 	},
 
 	{
-		"kirasok/table-nvim",
+		"SCJangra/table-nvim",
 		ft = "markdown",
 		opts = {
 			padd_column_separators = true, -- Insert a space around column separators.
 			mappings = { -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.
-				next = "<leader><TAB>", -- Go to next cell.
-				prev = "<leader><S-TAB>", -- Go to previous cell.
+				next = "<A-TAB>", -- Go to next cell.
+				prev = "<A-S-TAB>", -- Go to previous cell.
 			},
 		},
 	},
