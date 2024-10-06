@@ -4,15 +4,37 @@ local plugins = {
 	{
 		"kirasok/render-markdown.nvim",
 		ft = "markdown",
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
 		opts = {
 			render_modes = { "n", "c", "i" },
 			sign = { enabled = false },
 			latex = { enabled = false },
 			indent = { enabled = true },
+			heading = {
+				backgrounds = {
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+				},
+			},
 			link = {
 				hyperlink = "",
 			},
 		},
+		config = function(_, opts)
+			require("render-markdown").setup(opts)
+			local base30 = require("base46").get_theme_tb("base_30")
+			vim.api.nvim_set_hl(0, "@markup.heading.1", { fg = base30.red, bg = "", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.heading.2", { fg = base30.yellow, bg = "", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.heading.3", { fg = base30.cyan, bg = "", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.heading.4", { fg = base30.green, bg = "", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.heading.5", { fg = base30.blue, bg = "", bold = true })
+			vim.api.nvim_set_hl(0, "@markup.heading.6", { fg = base30.purple, bg = "", bold = true })
+		end,
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", "zk-org/zk-nvim" },
 	},
 
