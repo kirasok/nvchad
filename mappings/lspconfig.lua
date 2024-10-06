@@ -69,4 +69,10 @@ return {
 		mode = "n",
 		desc = "LSP references",
 	},
+	{
+		"fr",
+		require("nvchad.lsp.renamer"),
+		mode = "n",
+		desc = "LSP rename",
+	},
 }

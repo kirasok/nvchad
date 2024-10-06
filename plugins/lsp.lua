@@ -209,29 +209,6 @@ local plugins = {
 	},
 
 	{
-		"smjonas/inc-rename.nvim",
-		dependencies = {
-			{
-				"stevearc/dressing.nvim",
-				opts = {
-					input = {
-						override = function(conf)
-							conf.col = 1
-							conf.row = 4
-							return conf
-						end,
-					},
-				},
-			}, -- optional for vim.ui.select
-		},
-		event = "LspAttach",
-		opts = {
-			input_buffer_type = "dressing",
-		},
-		keys = require("mappings.inc-rename-nvim"),
-	},
-
-	{
 		"kosayoda/nvim-lightbulb",
 		event = "LspAttach",
 		opts = {
