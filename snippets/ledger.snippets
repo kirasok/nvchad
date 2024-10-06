@@ -1,11 +1,18 @@
-snippet ent
+snippet entrance
 	`strftime("%Y-%m-%d")` ${1:transaction}
 	  ${2:account}  ${3:value}
-	  ${0:account}
+	  ${4:account}
+  $0
+
+snippet purchase
+	`strftime("%Y-%m-%d")` ${1:transaction}
+	  ${2:account}  ${3:value}
+	  assets:bank:mas
+  $0
 
 snippet milk
 	`strftime("%Y-%m-%d")` milk
-	  expenses:food  78 RUB
+	  expenses:food  80 RUB
 	  assets:bank:mas
   $0
 
