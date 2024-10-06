@@ -7,65 +7,49 @@ return {
 	},
 	{
 		"fD",
-		function()
-			vim.lsp.buf.declaration()
-		end,
+		vim.lsp.buf.declaration,
 		mode = "n",
 		desc = "LSP declaration",
 	},
 	{
 		"fd",
-		function()
-			vim.lsp.buf.definition()
-		end,
+		vim.lsp.buf.definition,
 		mode = "n",
 		desc = "LSP definition",
 	},
 	{
 		"fk",
-		function()
-			vim.lsp.buf.hover()
-		end,
+		vim.lsp.buf.hover,
 		mode = "n",
 		desc = "LSP hover",
 	},
 	{
 		"fi",
-		function()
-			vim.lsp.buf.implementation()
-		end,
+		vim.lsp.buf.implementation,
 		mode = "n",
 		desc = "LSP implementation",
 	},
 	{
 		"fs",
-		function()
-			vim.lsp.buf.signature_help()
-		end,
+		vim.lsp.buf.signature_help,
 		mode = "n",
 		desc = "LSP signature help",
 	},
 	{
 		"ft",
-		function()
-			vim.lsp.buf.type_definition()
-		end,
+		vim.lsp.buf.type_definition,
 		mode = "n",
 		desc = "LSP definition type",
 	},
 	{
 		"fa",
-		function()
-			vim.lsp.buf.code_action()
-		end,
+		vim.lsp.buf.code_action,
 		mode = "n",
 		desc = "LSP code action",
 	},
 	{
 		"fR",
-		function()
-			vim.lsp.buf.references()
-		end,
+		vim.lsp.buf.references,
 		mode = "n",
 		desc = "LSP references",
 	},
