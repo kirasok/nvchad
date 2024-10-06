@@ -27,3 +27,9 @@ snippet bc-mir
 	  assets:bank:mas
 	  assets:bank:mir  ${1:value}
   $0
+
+snippet rev-passive
+	`strftime("%Y-%m-%d")` ${1:transaction}
+	  revenue:passive:${2:account}
+	  ${3:account}  ${4:value}
+  $0
