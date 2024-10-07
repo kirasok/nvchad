@@ -171,12 +171,6 @@ local plugins = {
 	},
 
 	{
-		-- Print function signature in popup window
-		"ray-x/lsp_signature.nvim",
-		event = "LspAttach",
-	},
-
-	{
 		"utilyre/sentiment.nvim",
 		version = "*",
 		event = "LspAttach", -- keep for lazy loading
