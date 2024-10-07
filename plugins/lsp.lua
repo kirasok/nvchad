@@ -78,17 +78,6 @@ local plugins = {
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
-				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							vim.lsp.buf.format({ async = false })
-						end,
-					})
-				end
 			end
 			local capabilities = require("nvchad.configs.lspconfig").capabilities
 
@@ -135,6 +124,7 @@ local plugins = {
 			})
 
 			lspconfig.lua_ls.setup({
+				on_attach = on_attach,
 				capabilities = capabilities,
 
 				settings = {
