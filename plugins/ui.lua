@@ -142,17 +142,7 @@ local plugins = {
 		keys = require("mappings.zen-mode-nvim"),
 	},
 
-	{
-		"cxwx/specs.nvim",
-		event = "BufEnter",
-		commit = "dd82496",
-		opts = {
-			popup = {
-				inc_ms = 16,
-			},
-		},
-		config = true,
-	},
+	{ "DanilaMihailov/beacon.nvim", event = "BufEnter", commit = "098ff96" },
 
 	{
 		"3rd/image.nvim",
