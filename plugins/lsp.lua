@@ -173,7 +173,7 @@ local plugins = {
 	{
 		"utilyre/sentiment.nvim",
 		version = "*",
-		event = "LspAttach", -- keep for lazy loading
+		event = "VeryLazy", -- keep for lazy loading
 		config = true,
 		init = function()
 			-- `matchparen.vim` needs to be disabled manually in case of lazy loading
