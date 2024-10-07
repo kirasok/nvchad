@@ -11,7 +11,7 @@ local linters = {
 }
 
 local formatters = {
-	-- lua = { "stylua" },
+	lua = { "stylua" },
 	toml = { "taplo" },
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
@@ -73,7 +73,7 @@ local plugins = {
 		},
 		keys = require("mappings.lspconfig"),
 		config = function()
-			require("nvchad.configs.lspconfig")
+			dofile(vim.g.base46_cache .. "lsp")
 			local on_attach = function(client, bufnr)
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
 				client.server_capabilities.documentFormattingProvider = true
@@ -112,6 +112,8 @@ local plugins = {
 			})
 
 			lspconfig.texlab.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
 				settings = {
 					texlab = {
 						build = {
@@ -132,18 +134,34 @@ local plugins = {
 				},
 			})
 
-			-- lspconfig.lua_ls.setup({
-			-- 	settings = {
-			-- 		format = {
-			-- 			enable = false,
-			-- 		},
-			-- 		Lua = {
-			-- 			completion = {
-			-- 				callSnippet = "Replace",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+
+				settings = {
+					format = {
+						enable = false,
+					},
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+						workspace = {
+							library = {
+								vim.fn.expand("$VIMRUNTIME/lua"),
+								vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+								vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types",
+								vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
+								"${3rd}/luv/library",
+							},
+							maxPreload = 100000,
+							preloadFileSize = 10000,
+						},
+					},
+				},
+			})
 		end,
 	},
 
