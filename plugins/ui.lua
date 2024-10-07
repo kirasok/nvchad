@@ -45,11 +45,27 @@ local plugins = {
 	},
 
 	{
-		"kevinhwang91/nvim-bqf",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
+		"folke/trouble.nvim",
+		-- TODO: add support for lsp methods
+		opts = {}, -- WARN: don't remove
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>qq",
+				"<cmd>Trouble diagnostics toggle focus=true<cr>",
+				desc = "Diagnostics",
+			},
+			{
+				"<leader>qQ",
+				"<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
+				desc = "Buffer Diagnostics",
+			},
+			{
+				"<leader>qt",
+				"<cmd>Trouble todo toggle focus=true<cr>",
+				desc = "Todos",
+			},
 		},
-		ft = "qf",
 	},
 
 	{

@@ -1,4 +1,5 @@
 return {
+	-- TODO: set only keymaps that lsp supports
 	{
 		"fF",
 		vim.diagnostic.open_float,
