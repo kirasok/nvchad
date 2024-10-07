@@ -144,22 +144,6 @@ local plugins = {
 		},
 		keys = require("mappings.img-clip-nvim"),
 	},
-
-	{
-		"hrsh7th/cmp-emoji",
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
-		ft = "markdown",
-		config = function(_, opts)
-			local cmp = require("cmp")
-			local config = cmp.get_config()
-			table.insert(config.sources, {
-				name = "emoji",
-			})
-			cmp.setup(config)
-		end,
-	},
 }
 
 return plugins
