@@ -42,12 +42,6 @@ return {
 		desc = "LSP definition type",
 	},
 	{
-		"fa",
-		vim.lsp.buf.code_action,
-		mode = "n",
-		desc = "LSP code action",
-	},
-	{
 		"fR",
 		vim.lsp.buf.references,
 		mode = "n",
