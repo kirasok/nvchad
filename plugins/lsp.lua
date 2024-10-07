@@ -206,6 +206,7 @@ local plugins = {
 		event = "LspAttach",
 		opts = {
 			autocmd = { enabled = true },
+			sign = { text = " " },
 			ignore = {
 				ft = { "dart" },
 			},
