@@ -78,6 +78,9 @@ local plugins = {
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
+				if client.supports_method("textDocument/inlayHint") then
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				end
 			end
 			local capabilities = require("nvchad.configs.lspconfig").capabilities
 
