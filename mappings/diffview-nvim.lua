@@ -11,6 +11,27 @@ return {
 				vim.cmd.DiffviewOpen()
 			end
 		end,
-		desc = "Diffview",
+		desc = "Diff HEAD",
+	},
+	{
+		"<leader>gD",
+		function()
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
+			require("telescope.builtin").git_commits({
+				attach_mappings = function(prompt_bufnr, _)
+					actions.select_default:replace(function()
+						local selection = action_state.get_selected_entry()
+						if selection == nil then
+							return
+						end
+						actions.close(prompt_bufnr)
+						vim.cmd.DiffviewOpen(selection.value)
+					end)
+					return true
+				end,
+			})
+		end,
+		desc = "Diff commit",
 	},
 }

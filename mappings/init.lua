@@ -77,5 +77,4 @@ map(
 	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 	{ desc = "telescope find all files" }
 )
-map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
-map("n", "<leader>gs", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "Checkout commit" })
