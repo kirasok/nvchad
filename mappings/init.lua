@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-map("i", "<C-l>", "<Esc>[s1z=`]a", { desc = "spell fix last mistake" })
 map("n", "j", "gj", { desc = "move 1 line down" })
 map("n", "k", "gk", { desc = "move 1 line up" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -16,6 +15,8 @@ map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+
+map("i", "<C-l>", "<Esc>[s1z=`]a", { desc = "spell fix last mistake" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear highlights" })
 
