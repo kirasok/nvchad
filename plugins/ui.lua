@@ -146,6 +146,7 @@ local plugins = {
 
 	{
 		"3rd/image.nvim",
+		ft = "markdown",
 		dependencies = {
 			{
 				"vhyrro/luarocks.nvim",
