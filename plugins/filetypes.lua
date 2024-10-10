@@ -99,6 +99,7 @@ local plugins = {
 		lazy = "leetcode.nvim" ~= vim.fn.argv()[1],
 		opts = {
 			lang = "python3",
+			image_support = true,
 		},
 	},
 
