@@ -11,7 +11,7 @@ end
 
 vim.opt.conceallevel = 0
 vim.opt.spell = true
-vim.opt.spelllang = { "en" }
+vim.opt.spelllang = { "en", "ru" }
 vim.opt.scrolloff = 3
 
 vim.g.editorconfig = true

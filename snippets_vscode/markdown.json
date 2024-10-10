@@ -1,0 +1,1 @@
+{"!abandonment":{"prefix":"!abandonment","body":["> [!INFO]","> The reason for abandonment: ${1:rationale}","$0"]}}
