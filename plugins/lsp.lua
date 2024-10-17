@@ -76,6 +76,7 @@ local plugins = {
 			dofile(vim.g.base46_cache .. "lsp")
 			local on_attach = function(client, bufnr)
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
+				-- TODO: set mapping on lsp attach only if lsp supports related method
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
 				if client.supports_method("textDocument/inlayHint") then
