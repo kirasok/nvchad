@@ -40,17 +40,6 @@ map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 
 -- terminal
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
-
--- new terminals
-map("n", "<leader>h", function()
-	require("nvchad.term").new({ pos = "sp" })
-end, { desc = "terminal new horizontal term" })
-
-map("n", "<leader>v", function()
-	require("nvchad.term").new({ pos = "vsp" })
-end, { desc = "terminal new vertical window" })
-
 -- toggleable
 map({ "n", "t" }, "<A-v>", function()
 	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
