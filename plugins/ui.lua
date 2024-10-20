@@ -146,6 +146,7 @@ local plugins = {
 
 	{
 		"3rd/image.nvim",
+		enabled = false,
 		ft = "markdown",
 		dependencies = {
 			{
