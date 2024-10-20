@@ -41,12 +41,6 @@ local plugins = {
 	},
 
 	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = true,
-	},
-
-	{
 		"chrisgrieser/nvim-spider",
 		keys = require("mappings.nvim-spider"),
 	},
