@@ -83,6 +83,15 @@ local plugins = {
 		},
 		opts = {
 			picker = "telescope",
+			lsp = {
+				config = {
+					on_attach = require("configs.lsp").on_attach,
+				},
+				auto_attach = {
+					enabled = true,
+					filetypes = { "markdown" },
+				},
+			},
 		},
 		config = function(_, opts)
 			require("zk").setup(opts)
