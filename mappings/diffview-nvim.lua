@@ -18,7 +18,7 @@ return {
 		function()
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
-			require("telescope.builtin").git_commits({
+			require("mappings.telescope").git_commits({
 				attach_mappings = function(prompt_bufnr, _)
 					actions.select_default:replace(function()
 						local selection = action_state.get_selected_entry()
@@ -44,6 +44,6 @@ return {
 				vim.cmd.DiffviewFileHistory()
 			end
 		end,
-		desc = "File history",
+		desc = "History diff",
 	},
 }
