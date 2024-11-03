@@ -41,6 +41,31 @@ local servers = {
 	"nil_ls",
 }
 
+vim.api.nvim_create_user_command("LspCapabilities", function()
+	local curBuf = vim.api.nvim_get_current_buf()
+	local clients = vim.lsp.get_active_clients({ bufnr = curBuf })
+	for _, client in pairs(clients) do
+		if client.name ~= "null-ls" then
+			local capAsList = {}
+			for key, value in pairs(client.server_capabilities) do
+				if value then
+					table.insert(capAsList, "- " .. key)
+				end
+			end
+
+			table.sort(capAsList) -- sorts alphabetically
+			local msg = "# " .. client.name .. "\n" .. table.concat(capAsList, "\n")
+			vim.notify(msg, "trace", {
+				on_open = function(win)
+					local buf = vim.api.nvim_win_get_buf(win)
+					vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+				end,
+				timeout = 14000,
+			})
+		end
+	end
+end, {})
+
 local plugins = {
 	{
 		"neovim/nvim-lspconfig",
@@ -67,19 +92,45 @@ local plugins = {
 						lsp_fallback = true,
 					},
 				},
-				keys = require("mappings.conform-nvim"),
 				config = true,
 			},
+			{
+				"aznhe21/actions-preview.nvim",
+				dependencies = { "nvim-telescope/telescope.nvim" },
+				-- WARN: can't be moved opts, because highlight_command requires plugin
+				config = function(_, _)
+					require("actions-preview").setup({
+						highlight_command = {
+							require("actions-preview.highlight").delta(),
+						},
+						backend = { "telescope" },
+						telescope = {
+							sorting_strategy = "ascending",
+							layout_strategy = "vertical",
+							layout_config = {
+								width = 0.8,
+								height = 0.9,
+								prompt_position = "top",
+								preview_cutoff = 20,
+								preview_height = function(_, _, max_lines)
+									return max_lines - 15
+								end,
+							},
+						},
+					})
+				end,
+			},
 		},
-		keys = require("mappings.lspconfig"),
+		event = "User FilePost",
 		config = function()
 			dofile(vim.g.base46_cache .. "lsp")
 			local on_attach = function(client, bufnr)
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
+				require("mappings.lspconfig").setup(client.server_capabilities)
 				-- TODO: set mapping on lsp attach only if lsp supports related method
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
-				if client.supports_method("textDocument/inlayHint") then
+				if client.server_capabilities.inlayHintProvider then
 					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end
 			end
@@ -196,7 +247,7 @@ local plugins = {
 		event = "LspAttach",
 		opts = {
 			autocmd = { enabled = true },
-			sign = { text = " " },
+			sign = { text = " ", enabled = true },
 			ignore = {
 				ft = { "dart" },
 			},
@@ -327,34 +378,6 @@ local plugins = {
 			require("symbol-usage").setup({
 				text_format = text_format,
 			})
-		end,
-	},
-
-	{
-		"aznhe21/actions-preview.nvim",
-		event = "LspAttach",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function(_, _)
-			require("actions-preview").setup({
-				highlight_command = {
-					require("actions-preview.highlight").delta(),
-				},
-				backend = { "telescope" },
-				telescope = {
-					sorting_strategy = "ascending",
-					layout_strategy = "vertical",
-					layout_config = {
-						width = 0.8,
-						height = 0.9,
-						prompt_position = "top",
-						preview_cutoff = 20,
-						preview_height = function(_, _, max_lines)
-							return max_lines - 15
-						end,
-					},
-				},
-			})
-			vim.keymap.set({ "v", "n" }, "fa", require("actions-preview").code_actions, { desc = "LSP code actions" })
 		end,
 	},
 }
