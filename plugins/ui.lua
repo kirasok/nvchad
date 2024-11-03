@@ -12,6 +12,8 @@ local plugins = {
 			wk.add({
 				{ "<leader>f", group = "find" },
 				{ "<leader>g", group = "git" },
+				{ "<leader>s", group = "snippet" },
+				{ "<leader>q", group = "quickfix" },
 			})
 		end,
 	},
