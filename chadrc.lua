@@ -9,7 +9,7 @@ local options = {
 		changed_themes = {},
 		transparency = true,
 		theme = "rosepine",
-		theme_toggle = { "kanawaga", "papercolor-light" },
+		theme_toggle = { "rosepine", "rosepine-dawn" },
 	},
 
 	ui = {
