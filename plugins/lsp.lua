@@ -188,9 +188,6 @@ local plugins = {
 						enable = false,
 					},
 					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
 						completion = {
 							callSnippet = "Replace",
 						},
