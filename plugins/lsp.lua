@@ -1,71 +1,6 @@
 ---@type NvPluginSpec[]
 
-local linters = {
-	javascript = { "deno" },
-	javascriptreact = { "deno" },
-	typescript = { "deno" },
-	typescriptreact = { "deno" },
-	zsh = { "zsh" },
-	json = { "jsonlint" },
-	python = { "pylint", "pydocstyle", "pycodestyle" },
-}
-
-local formatters = {
-	lua = { "stylua" },
-	toml = { "taplo" },
-	yaml = { "yamlfmt" },
-	sh = { "shfmt" },
-	zsh = { "shfmt" },
-	nix = { "nixfmt" },
-	markdown = { "prettierd", "prettier", stop_after_first = true },
-	-- Conform will run multiple formatters sequentially
-	python = { "isort", "black" },
-	-- Use a sub-list to run only the first available formatter
-	javascript = { "prettierd", "prettier", stop_after_first = true },
-}
-
--- if you just want default config for the servers then put them in a table
--- otherwise look into lspconfig setup
-local servers = {
-	"rust_analyzer",
-	"bashls",
-	"taplo",
-	"yamlls",
-	"jedi_language_server",
-	"hls",
-	"clangd",
-	"html",
-	"jsonls",
-	"cssls",
-	"ts_ls",
-	"nil_ls",
-	"zk",
-}
-
-vim.api.nvim_create_user_command("LspCapabilities", function()
-	local curBuf = vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.get_active_clients({ bufnr = curBuf })
-	for _, client in pairs(clients) do
-		if client.name ~= "null-ls" then
-			local capAsList = {}
-			for key, value in pairs(client.server_capabilities) do
-				if value then
-					table.insert(capAsList, "- " .. key)
-				end
-			end
-
-			table.sort(capAsList) -- sorts alphabetically
-			local msg = "# " .. client.name .. "\n" .. table.concat(capAsList, "\n")
-			vim.notify(msg, "trace", {
-				on_open = function(win)
-					local buf = vim.api.nvim_win_get_buf(win)
-					vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-				end,
-				timeout = 14000,
-			})
-		end
-	end
-end, {})
+local config = require("configs.lsp")
 
 local plugins = {
 	{
@@ -74,7 +9,7 @@ local plugins = {
 			{
 				"mfussenegger/nvim-lint",
 				config = function(_, opts)
-					require("lint").linters_by_ft = linters
+					require("lint").linters_by_ft = config.linters
 
 					vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 						callback = function()
@@ -86,7 +21,7 @@ local plugins = {
 			{
 				"stevearc/conform.nvim",
 				opts = {
-					formatters_by_ft = formatters,
+					formatters_by_ft = config.formatters,
 					format_on_save = {
 						-- These options will be passed to conform.format()
 						timeout_ms = 500,
@@ -126,20 +61,12 @@ local plugins = {
 		event = "User FilePost",
 		config = function()
 			dofile(vim.g.base46_cache .. "lsp")
-			local on_attach = function(client, bufnr)
-				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
-				require("mappings.lspconfig").setup(client.server_capabilities)
-				client.server_capabilities.documentFormattingProvider = true
-				client.server_capabilities.documentRangeFormattingProvider = true
-				if client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-				end
-			end
+			local on_attach = config.on_attach
 			local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 			local lspconfig = require("lspconfig")
 
-			for _, lsp in ipairs(servers) do
+			for _, lsp in ipairs(config.servers) do
 				lspconfig[lsp].setup({
 					on_attach = on_attach,
 					capabilities = capabilities,
