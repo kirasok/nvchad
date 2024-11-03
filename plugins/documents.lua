@@ -83,10 +83,6 @@ local plugins = {
 		},
 		opts = {
 			picker = "telescope",
-			auto_attach = {
-				enabled = true,
-				filetypes = { "markdown" },
-			},
 		},
 		config = function(_, opts)
 			require("zk").setup(opts)

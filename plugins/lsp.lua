@@ -39,6 +39,7 @@ local servers = {
 	"cssls",
 	"ts_ls",
 	"nil_ls",
+	"zk",
 }
 
 vim.api.nvim_create_user_command("LspCapabilities", function()
