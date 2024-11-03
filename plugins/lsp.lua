@@ -247,7 +247,8 @@ local plugins = {
 		event = "LspAttach",
 		opts = {
 			autocmd = { enabled = true },
-			sign = { text = " ", enabled = true },
+			sign = { enabled = false },
+			virtual_text = { enabled = true, text = " ", lens_text = "󰍉 " },
 			ignore = {
 				ft = { "dart" },
 			},
