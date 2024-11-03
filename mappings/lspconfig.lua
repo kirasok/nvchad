@@ -10,17 +10,10 @@ return {
 		end, opts("Format"))
 		map("n", "<leader>lF", vim.diagnostic.open_float, opts("Floating diagnostics"))
 
-		vim.notify(table.concat(server_capabilities, "\n"), "trace", {
-			on_open = function(win)
-				local buf = vim.api.nvim_win_get_buf(win)
-				vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-			end,
-			timeout = 14000,
-		})
 		if server_capabilities.declarationProvider then
 			map("n", "<leader>fD", vim.lsp.buf.declaration, opts("Declaration"))
 		end
-		if server_capabilities.declarationProvider then
+		if server_capabilities.definitionProvider then
 			map("n", "<leader>ld", vim.lsp.buf.definition, opts("Definition"))
 		end
 		if server_capabilities.hoverProvider then
