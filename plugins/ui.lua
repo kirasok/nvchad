@@ -49,7 +49,6 @@ local plugins = {
 
 	{
 		"folke/trouble.nvim",
-		-- TODO: add support for lsp methods
 		opts = {}, -- WARN: don't remove
 		cmd = "Trouble",
 		keys = {

@@ -121,6 +121,7 @@ local plugins = {
 					})
 				end,
 			},
+			{ "folke/trouble.nvim" },
 		},
 		event = "User FilePost",
 		config = function()
@@ -128,7 +129,6 @@ local plugins = {
 			local on_attach = function(client, bufnr)
 				-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
 				require("mappings.lspconfig").setup(client.server_capabilities)
-				-- TODO: set mapping on lsp attach only if lsp supports related method
 				client.server_capabilities.documentFormattingProvider = true
 				client.server_capabilities.documentRangeFormattingProvider = true
 				if client.server_capabilities.inlayHintProvider then
