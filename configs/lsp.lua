@@ -39,6 +39,7 @@ M.servers = {
 	"cssls",
 	"ts_ls",
 	"nil_ls",
+	"lemminx",
 }
 
 vim.api.nvim_create_user_command("LspCapabilities", function()
