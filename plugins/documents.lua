@@ -145,6 +145,13 @@ local plugins = {
 		opts = {
 			default = {
 				dir_path = "static",
+				use_absolute_path = true,
+				insert_mode_after_paste = false,
+			},
+			filetypes = {
+				markdown = {
+					template = "![$FILE_NAME_NO_EXT]($FILE_PATH)$CURSOR",
+				},
 			},
 		},
 		keys = require("mappings.img-clip-nvim"),
