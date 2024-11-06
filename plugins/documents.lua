@@ -4,6 +4,12 @@ local plugins = {
 	{
 		"kirasok/render-markdown.nvim",
 		ft = "markdown",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+			"zk-org/zk-nvim",
+			"jbyuki/nabla.nvim",
+		},
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {
@@ -24,6 +30,12 @@ local plugins = {
 			link = {
 				hyperlink = "",
 			},
+			win_options = { conceallevel = { rendered = 2 } },
+			on = {
+				attach = function()
+					require("nabla").enable_virt({ autogen = true })
+				end,
+			},
 		},
 		config = function(_, opts)
 			require("render-markdown").setup(opts)
@@ -35,7 +47,6 @@ local plugins = {
 			vim.api.nvim_set_hl(0, "@markup.heading.5", { fg = base30.blue, bg = "", bold = true })
 			vim.api.nvim_set_hl(0, "@markup.heading.6", { fg = base30.purple, bg = "", bold = true })
 		end,
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons", "zk-org/zk-nvim" },
 	},
 
 	{

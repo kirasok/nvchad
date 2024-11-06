@@ -8,7 +8,7 @@ local options = {
 		integrations = {},
 		changed_themes = {},
 		transparency = true,
-		theme = "rosepine-dawn",
+		theme = "rosepine",
 		theme_toggle = { "rosepine", "rosepine-dawn" },
 	},
 
