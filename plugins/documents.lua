@@ -12,32 +12,13 @@ local plugins = {
 		},
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
-		opts = {
-			render_modes = { "n", "c", "i" },
-			sign = { enabled = false },
-			latex = { enabled = false },
-			indent = { enabled = true },
-			heading = {
-				backgrounds = {
-					"",
-					"",
-					"",
-					"",
-					"",
-					"",
-				},
-			},
-			link = {
-				hyperlink = "",
-			},
-			win_options = { conceallevel = { rendered = 2 } },
-			on = {
-				attach = function()
-					require("nabla").enable_virt({ autogen = true })
-				end,
-			},
-		},
+		opts = require("configs.render-markdown").opts,
 		config = function(_, opts)
+			opts.append_change_events = { "DiagnosticChanged" }
+			opts.link.wiki.enabled = false
+			opts.custom_handlers = {
+				markdown_inline = require("configs.render-markdown.markdown_inline"),
+			}
 			require("render-markdown").setup(opts)
 			local base30 = require("base46").get_theme_tb("base_30")
 			vim.api.nvim_set_hl(0, "@markup.heading.1", { fg = base30.red, bg = "", bold = true })
