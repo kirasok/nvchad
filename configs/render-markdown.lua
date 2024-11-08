@@ -1,4 +1,6 @@
 M = {}
+---@module 'render-markdown'
+---@type render.md.UserConfig
 M.opts = {
 	render_modes = { "n", "c", "i" },
 	sign = { enabled = false },

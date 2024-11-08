@@ -6,9 +6,7 @@ end
 local open = function(mode)
 	local trouble = require("trouble")
 	return function()
-		if trouble.toggle(mode) then
-			trouble.focus(mode)
-		end
+		trouble.toggle({ mode = mode, focus = true })
 	end
 end
 
