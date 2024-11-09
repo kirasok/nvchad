@@ -49,5 +49,7 @@ return {
 		"vim",
 		"vimdoc",
 		"yaml",
+		"desktop",
+		"xresources",
 	},
 }
