@@ -1,1 +1,1 @@
-{"shellbang":{"body":"#!\/bin\/env python3","prefix":"shellbang"}}
+{"shellbang":{"body":"#!\/usr\/bin\/env python3","prefix":"!shellbang"}}

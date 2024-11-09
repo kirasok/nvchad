@@ -7,7 +7,6 @@ M.linters = {
 	typescriptreact = { "deno" },
 	zsh = { "zsh" },
 	json = { "jsonlint" },
-	python = { "pylint", "pydocstyle", "pycodestyle" },
 }
 
 M.formatters = {
@@ -18,8 +17,6 @@ M.formatters = {
 	zsh = { "shfmt" },
 	nix = { "nixfmt" },
 	markdown = { "prettierd", "prettier", stop_after_first = true },
-	-- Conform will run multiple formatters sequentially
-	python = { "isort", "black" },
 	-- Use a sub-list to run only the first available formatter
 	javascript = { "prettierd", "prettier", stop_after_first = true },
 }
@@ -31,7 +28,6 @@ M.servers = {
 	"bashls",
 	"taplo",
 	"yamlls",
-	"jedi_language_server",
 	"hls",
 	"clangd",
 	"html",
@@ -40,6 +36,7 @@ M.servers = {
 	"ts_ls",
 	"nil_ls",
 	"lemminx",
+	"pylsp",
 }
 
 vim.api.nvim_create_user_command("LspCapabilities", function()
