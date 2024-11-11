@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 ---@module 'render-markdown'
 ---@type render.md.UserConfig
 M.opts = {
