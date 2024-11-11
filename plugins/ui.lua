@@ -15,6 +15,7 @@ local plugins = {
 				{ "<leader>s", group = "snippet" },
 				{ "<leader>q", group = "quickfix" },
 				{ "<leader>l", group = "lsp" },
+				{ "<leader>d", group = "dap" },
 			})
 		end,
 	},
