@@ -21,22 +21,59 @@ M.formatters = {
 	javascript = { "prettierd", "prettier", stop_after_first = true },
 }
 
--- if you just want default config for the servers then put them in a table
--- otherwise look into lspconfig setup
 M.servers = {
-	"rust_analyzer",
-	"bashls",
-	"taplo",
-	"yamlls",
-	"hls",
-	"clangd",
-	"html",
-	"jsonls",
-	"cssls",
-	"ts_ls",
-	"nil_ls",
-	"lemminx",
-	"pylsp",
+	rust_analyzer = {},
+	bashls = {},
+	taplo = {},
+	yamlls = {},
+	hls = {},
+	clangd = {},
+	html = {},
+	jsonls = {},
+	cssls = {},
+	ts_ls = {},
+	nil_ls = {},
+	lemminx = {},
+	pylsp = {},
+	gopls = {
+		settings = {
+			gopls = {
+				gofumpt = true,
+			},
+		},
+	},
+	texlab = {
+		settings = {
+			texlab = {
+				build = {
+					executable = "latexmk",
+					args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+					onSave = true,
+					forwardSearchAfter = true,
+				},
+				forwardSearch = {
+					executable = "zathura",
+					args = { "--synctex-forward", "%l:1:%f", "%p" },
+				},
+				chktex = {
+					onOpenAndSave = true,
+				},
+				formatterLineLength = 0,
+			},
+		},
+	},
+	lua_ls = {
+		settings = {
+			format = {
+				enable = false,
+			},
+			Lua = {
+				completion = {
+					callSnippet = "Replace",
+				},
+			},
+		},
+	},
 }
 
 vim.api.nvim_create_user_command("LspCapabilities", function()

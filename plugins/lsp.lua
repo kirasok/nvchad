@@ -1,7 +1,7 @@
----@type NvPluginSpec[]
-
+local nvchad_config = require("nvchad.configs.lspconfig")
 local config = require("configs.lsp")
 
+---@type NvPluginSpec[]
 local plugins = {
 	{
 		"neovim/nvim-lspconfig",
@@ -62,65 +62,16 @@ local plugins = {
 		config = function()
 			dofile(vim.g.base46_cache .. "lsp")
 			local on_attach = config.on_attach
-			local capabilities = require("nvchad.configs.lspconfig").capabilities
+			local capabilities = nvchad_config.capabilities
 
 			local lspconfig = require("lspconfig")
 
-			for _, lsp in ipairs(config.servers) do
-				lspconfig[lsp].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
+			for name, opts in pairs(config.servers) do
+				opts.on_attach = on_attach
+				opts.capabilities = capabilities
+				opts.on_init = nvchad_config.on_init
+				lspconfig[name].setup(opts)
 			end
-
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					gopls = {
-						gofumpt = true,
-					},
-				},
-			})
-
-			lspconfig.texlab.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					texlab = {
-						build = {
-							executable = "latexmk",
-							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-							onSave = true,
-							forwardSearchAfter = true,
-						},
-						forwardSearch = {
-							executable = "zathura",
-							args = { "--synctex-forward", "%l:1:%f", "%p" },
-						},
-						chktex = {
-							onOpenAndSave = true,
-						},
-						formatterLineLength = 0,
-					},
-				},
-			})
-
-			lspconfig.lua_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-
-				settings = {
-					format = {
-						enable = false,
-					},
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-					},
-				},
-			})
 		end,
 	},
 
