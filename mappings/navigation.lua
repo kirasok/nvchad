@@ -86,4 +86,26 @@ M.yazi = {
 	},
 }
 
+require("which-key").add({
+	{ "<leader>q", group = "quickfix" },
+})
+---@type LazyKeymaps[]
+M.trouble = {
+	{
+		"<leader>qq",
+		"<cmd>Trouble diagnostics toggle focus=true<cr>",
+		desc = "Diagnostics",
+	},
+	{
+		"<leader>qQ",
+		"<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
+		desc = "Buffer Diagnostics",
+	},
+	{
+		"<leader>qt",
+		"<cmd>Trouble todo toggle focus=true<cr>",
+		desc = "Todos",
+	},
+}
+
 return M

@@ -45,33 +45,28 @@ M.yanky = {
 	},
 }
 
-M.luasnip = function()
-	require("luasnip.loaders.from_vscode").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_vscode" },
-	})
-	require("luasnip.loaders.from_snipmate").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_snipmate" },
-	})
-	require("luasnip.loaders.from_lua").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_lua" },
-	})
-
-	-- highlight luasnip nodes
-	local types = require("luasnip.util.types")
-	return {
-		ext_opts = {
-			[types.choiceNode] = {
-				active = {
-					virt_text = { { "●", "GruvboxOrange" } },
-				},
-			},
-			[types.insertNode] = {
-				active = {
-					virt_text = { { "●", "GruvboxBlue" } },
-				},
-			},
-		},
-	}
+M.wilder = function(_, _)
+	local wilder = require("wilder")
+	wilder.setup({ modes = { ":", "/", "?" } })
+	wilder.set_option(
+		"renderer",
+		wilder.popupmenu_renderer({
+			highlighter = wilder.basic_highlighter(),
+			left = { " ", wilder.popupmenu_devicons() },
+			right = { " ", wilder.popupmenu_scrollbar() },
+		})
+	)
 end
+
+M.zen = {
+	window = {
+		width = 75,
+		options = {
+			number = false,
+			relativenumber = false,
+			cursorline = false,
+		},
+	},
+}
 
 return M

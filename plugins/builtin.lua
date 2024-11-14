@@ -26,6 +26,11 @@ local plugins = {
 			require("gitsigns").setup(opts)
 		end,
 	},
+
+	{
+		"folke/which-key.nvim",
+		lazy = false,
+	},
 }
 
 return plugins

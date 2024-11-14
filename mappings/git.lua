@@ -1,5 +1,9 @@
 M = {}
 
+require("which-key").add({
+	{ "<leader>g", group = "git" },
+})
+
 local previewers = require("telescope.previewers")
 local builtin = require("telescope.builtin")
 local git_diff = previewers.new_termopen_previewer({

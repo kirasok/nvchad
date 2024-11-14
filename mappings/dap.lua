@@ -3,6 +3,10 @@ local M = {}
 local map = vim.keymap.set
 
 M.dap = function()
+	require("which-key").add({
+		{ "<leader>d", group = "dap" },
+	})
+
 	map("n", "<leader>dd", function()
 		local dap = require("dap")
 		if dap.session() then

@@ -10,6 +10,10 @@ local open = function(mode)
 	end
 end
 
+require("which-key").add({
+	{ "<leader>l", group = "lsp" },
+})
+
 return {
 	setup = function(server_capabilities)
 		map("n", "<leader>lf", function()
@@ -44,5 +48,9 @@ return {
 		if server_capabilities.codeActionProvider then
 			vim.keymap.set({ "v", "n" }, "<leader>la", require("actions-preview").code_actions, opts("Code actions"))
 		end
+	end,
+
+	outline = function()
+		map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle outline" })
 	end,
 }

@@ -1,4 +1,5 @@
 local configs = require("configs.capabilities")
+local mappings = require("mappings.capabilities")
 ---@type NvPluginSpec[]
 return {
 	{
@@ -7,13 +8,6 @@ return {
 		event = "BufEnter",
 		config = function(_, _)
 			require("ufo").setup(configs.ufo())
-		end,
-	},
-
-	{
-		"L3MON4D3/LuaSnip",
-		config = function(_, _)
-			require("luasnip").setup(configs.luasnip())
 		end,
 	},
 
@@ -61,5 +55,26 @@ return {
 		"mcauley-penney/visual-whitespace.nvim",
 		event = "ModeChanged",
 		commit = "979aea2ab9c62508c086e4d91a5c821df54168a8",
+	},
+
+	{
+		"gelguy/wilder.nvim",
+		event = "CmdlineEnter",
+		build = ":UpdateRemotePlugins",
+		config = configs.wilder,
+	},
+
+	{
+		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
+		opts = configs.zen,
+		keys = mappings.zen,
+	},
+
+	{
+		"jiaoshijie/undotree",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = true,
+		keys = mappings.undotree,
 	},
 }

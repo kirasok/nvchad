@@ -1,3 +1,6 @@
+require("which-key").add({
+	{ "<leader>f", group = "find" },
+})
 return {
 	telescope = {
 		{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "telescope live grep" },

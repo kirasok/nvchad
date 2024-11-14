@@ -42,4 +42,11 @@ return {
 		lazy = false,
 		opts = configs.lastplace,
 	},
+
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- WARN: don't remove
+		cmd = "Trouble",
+		keys = mappings.trouble,
+	},
 }
