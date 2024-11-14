@@ -28,22 +28,6 @@ local plugins = {
 	},
 
 	{
-		-- open fields in the last place you left
-		"ethanholz/nvim-lastplace",
-		lazy = false,
-		opts = {
-			lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-			lastplace_ignore_filetype = {
-				"gitcommit",
-				"gitrebase",
-				"svn",
-				"hgcommit",
-			},
-			lastplace_open_folds = true,
-		},
-	},
-
-	{
 		"tzachar/highlight-undo.nvim",
 		event = "BufRead",
 	},
@@ -107,18 +91,6 @@ local plugins = {
 	},
 
 	{
-		"cpea2506/relative-toggle.nvim",
-		event = "BufEnter",
-		opts = {
-			pattern = "*",
-			events = {
-				on = { "BufEnter", "FocusGained", "InsertLeave", "WinEnter", "CmdlineLeave" },
-				off = { "BufLeave", "FocusLost", "InsertEnter", "WinLeave", "CmdlineEnter" },
-			},
-		},
-	},
-
-	{
 		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 		event = "BufRead",
 	},
@@ -143,49 +115,6 @@ local plugins = {
 			},
 		},
 		keys = require("mappings.zen-mode-nvim"),
-	},
-
-	{ "DanilaMihailov/beacon.nvim", event = "BufEnter", commit = "098ff96" },
-
-	{
-		"3rd/image.nvim",
-		enabled = false,
-		ft = "markdown",
-		dependencies = {
-			{
-				"vhyrro/luarocks.nvim",
-				priority = 1001, -- this plugin needs to run before anything else
-				opts = {
-					rocks = { "magick" },
-				},
-			},
-		},
-		opts = {
-			backend = "kitty",
-			max_height = 12, -- ^
-			max_width = 128,
-			max_height_window_percentage = math.huge, -- this is necessary for a good experience
-			max_width_window_percentage = math.huge,
-			window_overlap_clear_enabled = true,
-			window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-			integrations = {
-				markdown = {
-					download_remote_images = false,
-				},
-				neorg = {
-					download_remote_images = false,
-				},
-			},
-		},
-	},
-
-	{
-		"Aasim-A/scrollEOF.nvim",
-		event = { "CursorMoved", "WinScrolled" },
-		opts = {
-			insert_mode = true,
-			disabled_filetypes = { "quickfix" },
-		},
 	},
 
 	{

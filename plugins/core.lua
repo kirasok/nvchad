@@ -20,28 +20,6 @@ local plugins = {
 	},
 
 	{
-		"chrisgrieser/nvim-spider",
-		keys = require("mappings.nvim-spider"),
-	},
-
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		opts = require("configs.flash-nvim"),
-		keys = require("mappings.flash-nvim"),
-	},
-
-	{
-		"mikavilpas/yazi.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "VeryLazy",
-		opts = {
-			open_for_directories = true,
-		},
-		keys = require("mappings.yazi-nvim"),
-	},
-
-	{
 		"chrisgrieser/nvim-scissors",
 		dependencies = { "nvim-telescope/telescope.nvim", "L3MON4D3/LuaSnip" },
 		opts = { snippetDir = vim.fn.stdpath("config") .. "/lua/snippets_vscode" },
