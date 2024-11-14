@@ -32,7 +32,7 @@ end
 return {
 	git_commits = my_git_commits,
 	git_bcommits = my_git_bcommits,
-	keys = {
+	telescope = {
 		{ "<leader>gb", my_git_bcommits, desc = "File history" },
 		{ "<leader>gc", my_git_commits, desc = "Checkout commit" },
 		{ "<leader>fw", "<cmd>Telescope live_grep<CR>", desc = "telescope live grep" },
@@ -45,6 +45,30 @@ return {
 			"<leader>fa",
 			"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
 			desc = "telescope find all files",
+		},
+	},
+	text_case = {
+		{
+			"<space>fc",
+			"<cmd>TextCaseOpenTelescope<CR>",
+			mode = { "n", "x" },
+			desc = "telescope convert text case",
+		},
+	},
+	direcotory = {
+		{
+			"<Leader>fd",
+			function()
+				require("telescope-directory").directory({
+					feature = "live_grep", -- "find_files"|"grep_string"|"live_grep"
+				})
+			end,
+			desc = "telescope select directory for Live Grep",
+		},
+		{
+			"<Leader>fe",
+			"<CMD>Telescope directory find_files<CR>", -- "find_files"|"grep_string"|"live_grep"
+			desc = "telescope select directory for Find Files",
 		},
 	},
 }

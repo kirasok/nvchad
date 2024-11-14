@@ -63,30 +63,6 @@ local plugins = {
 	},
 
 	{
-		"johmsalas/text-case.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function(_, opts)
-			require("textcase").setup(opts)
-			require("telescope").load_extension("textcase")
-		end,
-		keys = {
-			{
-				"<space>fc",
-				"<cmd>TextCaseOpenTelescope<CR>",
-				mode = { "n", "x" },
-				desc = "telescope convert text case",
-			},
-		},
-		cmd = {
-			"Subs",
-			"TextCaseOpenTelescope",
-			"TextCaseOpenTelescopeQuickChange",
-			"TextCaseOpenTelescopeLSPChange",
-			"TextCaseStartReplacingCommand",
-		},
-	},
-
-	{
 		"chrisgrieser/nvim-scissors",
 		dependencies = { "nvim-telescope/telescope.nvim", "L3MON4D3/LuaSnip" },
 		opts = { snippetDir = vim.fn.stdpath("config") .. "/lua/snippets_vscode" },
@@ -111,46 +87,6 @@ local plugins = {
 		},
 		config = function(_, opts)
 			require("scissors").setup(opts)
-		end,
-	},
-
-	{
-		"fbuchlak/telescope-directory.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		opts = {
-			features = {
-				{
-					name = "print_directory",
-					callback = function(dirs)
-						require("zk.commands").get("ZkNew")({
-							dir = dirs[1],
-							title = vim.fn.input("Enter title: "),
-						})
-					end,
-				},
-			},
-		},
-		config = function(_, opts)
-			require("telescope-directory").setup(opts)
-		end,
-		keys = require("mappings.telescope-directory-nvim"),
-	},
-
-	{
-		"kirasok/telescope-media-files.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function(_, opts)
-			require("telescope").load_extension("media_files")
-			require("telescope").setup({
-				extensions = {
-					media_files = opts,
-				},
-			})
 		end,
 	},
 }

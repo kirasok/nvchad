@@ -13,7 +13,7 @@ local plugins = {
 			"zk-org/zk-nvim",
 			"jbyuki/nabla.nvim",
 		},
-		config = function(_, _)
+		config = function(_, opts)
 			require("render-markdown").setup(configs.render_markdown())
 		end,
 	},

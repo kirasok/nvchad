@@ -32,8 +32,6 @@ local plugins = {
 			require("gitsigns").setup(opts)
 		end,
 	},
-
-	{ "nvim-telescope/telescope.nvim", keys = require("mappings.telescope").keys },
 }
 
 return plugins
