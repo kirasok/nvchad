@@ -21,18 +21,6 @@ local plugins = {
 	},
 
 	{
-		"folke/todo-comments.nvim",
-		event = "BufRead",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = true,
-	},
-
-	{
-		"tzachar/highlight-undo.nvim",
-		event = "BufRead",
-	},
-
-	{
 		"folke/trouble.nvim",
 		opts = {}, -- WARN: don't remove
 		cmd = "Trouble",
@@ -56,22 +44,6 @@ local plugins = {
 	},
 
 	{
-		"gbprod/yanky.nvim",
-		event = "BufRead",
-		opts = {
-			highlight = {
-				timer = 250,
-			},
-		},
-	},
-
-	{
-		"m4xshen/smartcolumn.nvim",
-		event = "BufRead",
-		config = true,
-	},
-
-	{
 		"gelguy/wilder.nvim",
 		event = "CmdlineEnter",
 		build = ":UpdateRemotePlugins",
@@ -88,17 +60,6 @@ local plugins = {
 				})
 			)
 		end,
-	},
-
-	{
-		"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
-		event = "BufRead",
-	},
-
-	{
-		"mcauley-penney/visual-whitespace.nvim",
-		event = "ModeChanged",
-		commit = "979aea2ab9c62508c086e4d91a5c821df54168a8",
 	},
 
 	{

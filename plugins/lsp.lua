@@ -76,49 +76,6 @@ local plugins = {
 	},
 
 	{
-		"L3MON4D3/LuaSnip",
-		config = function(_, opts)
-			-- highlight luasnip nodes
-			local types = require("luasnip.util.types")
-			require("luasnip").config.setup({
-				ext_opts = {
-					[types.choiceNode] = {
-						active = {
-							virt_text = { { "●", "GruvboxOrange" } },
-						},
-					},
-					[types.insertNode] = {
-						active = {
-							virt_text = { { "●", "GruvboxBlue" } },
-						},
-					},
-				},
-			})
-
-			require("luasnip.loaders.from_vscode").lazy_load({
-				paths = { vim.fn.stdpath("config") .. "/lua/snippets_vscode" },
-			})
-			require("luasnip.loaders.from_snipmate").lazy_load({
-				paths = { vim.fn.stdpath("config") .. "/lua/snippets_snipmate" },
-			})
-			require("luasnip.loaders.from_lua").lazy_load({
-				paths = { vim.fn.stdpath("config") .. "/lua/snippets_lua" },
-			})
-		end,
-	},
-
-	{
-		"utilyre/sentiment.nvim",
-		version = "*",
-		event = "VeryLazy", -- keep for lazy loading
-		config = true,
-		init = function()
-			-- `matchparen.vim` needs to be disabled manually in case of lazy loading
-			vim.g.loaded_matchparen = 1
-		end,
-	},
-
-	{
 		"kosayoda/nvim-lightbulb",
 		event = "LspAttach",
 		opts = {

@@ -1,6 +1,6 @@
 local configs = require("configs.navigation")
 local mappings = require("mappings.navigation")
----@type NvPluginSpec
+---@type NvPluginSpec[]
 return {
 	{
 		"chrisgrieser/nvim-spider",
