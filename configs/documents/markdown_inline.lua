@@ -17,14 +17,25 @@ end
 
 function Render:render()
 	local line = self.node:line("first", 0)
-	if line ~= nil and line:find("[" .. self.node.text .. "]", 1, true) ~= nil then
-		self:wiki_link()
-		return
+	if line ~= nil then
+		local i, j = line:find("[" .. self.node.text .. "]", 1, true)
+		if i ~= nil and j ~= nil then
+			local left, right
+			if line:sub(i - 1, i - 1) == "#" then
+				left = " "
+			elseif line:sub(j + 1, j + 1) == "#" then
+				right = " "
+			end
+			self:wiki_link(left, right)
+			return
+		end
 	end
 end
 
 ---@private
-function Render:wiki_link()
+---@param left string?
+---@param right string?
+function Render:wiki_link(left, right)
 	---@return string? message
 	-- Matches node and diagnostic
 	local function get_from_diagnostics()
@@ -42,7 +53,7 @@ function Render:wiki_link()
 
 	local parts = Str.split(self.node.text:sub(2, -2), "|")
 	local link_component = self:link_component(parts[1])
-	local icon, highlight = self.config.link.wiki.icon, self.config.link.wiki.highlight
+	local icon, highlight = left or right or self.config.link.wiki.icon, self.config.link.wiki.highlight
 	if link_component ~= nil then
 		icon, highlight = link_component.icon, link_component.highlight
 	end
@@ -52,16 +63,28 @@ function Render:wiki_link()
 	else
 		link_text = link_text .. parts[#parts]
 	end
-	local added = self.marks:add("link", self.node.start_row, self.node.start_col - 1, {
+	local left_offset = self.node.start_col - 1
+	if left then
+		left_offset = left_offset - 1
+	end
+	local right_offset = self.node.end_col + 1
+	if right then
+		right_offset = right_offset + 1
+	end
+	local added = self.marks:add("link", self.node.start_row, left_offset, {
 		end_row = self.node.end_row,
-		end_col = self.node.end_col + 1,
+		end_col = right_offset,
 		virt_text = { { link_text, highlight } },
 		virt_text_pos = "inline",
 		conceal = "",
 	})
 
 	if added then
-		self.context:add_offset(self.node, Str.width(link_text) - Str.width(self.node.text))
+		local offset = Str.width(link_text) - Str.width(self.node.text)
+		if left or right then
+			offset = offset - 1
+		end
+		self.context:add_offset(self.node, offset)
 	end
 end
 
