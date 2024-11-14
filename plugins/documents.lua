@@ -44,6 +44,12 @@ local plugins = {
 	},
 
 	{
+		"kirasok/html-table-to-markdown.nvim",
+		ft = "markdown",
+		config = true,
+	},
+
+	{
 		-- manage zettelkasten
 		"zk-org/zk-nvim",
 		ft = "markdown",
