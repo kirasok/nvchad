@@ -113,6 +113,46 @@ local plugins = {
 			require("scissors").setup(opts)
 		end,
 	},
+
+	{
+		"fbuchlak/telescope-directory.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+		opts = {
+			features = {
+				{
+					name = "print_directory",
+					callback = function(dirs)
+						require("zk.commands").get("ZkNew")({
+							dir = dirs[1],
+							title = vim.fn.input("Enter title: "),
+						})
+					end,
+				},
+			},
+		},
+		config = function(_, opts)
+			require("telescope-directory").setup(opts)
+		end,
+		keys = require("mappings.telescope-directory-nvim"),
+	},
+
+	{
+		"kirasok/telescope-media-files.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		config = function(_, opts)
+			require("telescope").load_extension("media_files")
+			require("telescope").setup({
+				extensions = {
+					media_files = opts,
+				},
+			})
+		end,
+	},
 }
 
 return plugins

@@ -1,3 +1,5 @@
+local configs = require("configs.documents")
+local mappings = require("mappings.documents")
 ---@type NvPluginSpec[]
 local plugins = {
 
@@ -11,36 +13,15 @@ local plugins = {
 			"zk-org/zk-nvim",
 			"jbyuki/nabla.nvim",
 		},
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = require("configs.render-markdown").opts,
-		config = function(_, opts)
-			opts.append_change_events = { "DiagnosticChanged" }
-			opts.link.wiki.enabled = false
-			opts.custom_handlers = {
-				markdown_inline = require("configs.render-markdown.markdown_inline"),
-			}
-			require("render-markdown").setup(opts)
-			local base30 = require("base46").get_theme_tb("base_30")
-			vim.api.nvim_set_hl(0, "@markup.heading.1", { fg = base30.red, bg = "", bold = true })
-			vim.api.nvim_set_hl(0, "@markup.heading.2", { fg = base30.yellow, bg = "", bold = true })
-			vim.api.nvim_set_hl(0, "@markup.heading.3", { fg = base30.cyan, bg = "", bold = true })
-			vim.api.nvim_set_hl(0, "@markup.heading.4", { fg = base30.green, bg = "", bold = true })
-			vim.api.nvim_set_hl(0, "@markup.heading.5", { fg = base30.blue, bg = "", bold = true })
-			vim.api.nvim_set_hl(0, "@markup.heading.6", { fg = base30.purple, bg = "", bold = true })
+		config = function(_, _)
+			require("render-markdown").setup(configs.render_markdown())
 		end,
 	},
 
 	{
 		"SCJangra/table-nvim",
 		ft = "markdown",
-		opts = {
-			padd_column_separators = true, -- Insert a space around column separators.
-			mappings = { -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.
-				next = "<A-TAB>", -- Go to next cell.
-				prev = "<A-S-TAB>", -- Go to previous cell.
-			},
-		},
+		opts = configs.table_nvim,
 	},
 
 	{
@@ -54,49 +35,14 @@ local plugins = {
 		"zk-org/zk-nvim",
 		ft = "markdown",
 		dependencies = {
-			{
-				"fbuchlak/telescope-directory.nvim",
-				dependencies = {
-					"nvim-lua/plenary.nvim",
-					"nvim-telescope/telescope.nvim",
-				},
-				-- @type telescope-directory.ExtensionConfig
-				opts = {
-					features = {
-						{
-							name = "print_directory",
-							callback = function(dirs)
-								require("zk.commands").get("ZkNew")({
-									dir = dirs[1],
-									title = vim.fn.input("Enter title: "),
-								})
-							end,
-						},
-					},
-				},
-				config = function(_, opts)
-					require("telescope-directory").setup(opts)
-				end,
-				keys = require("mappings.telescope-directory-nvim"),
-			},
+			{ "fbuchlak/telescope-directory.nvim" },
 		},
-		opts = {
-			picker = "telescope",
-			lsp = {
-				config = {
-					on_attach = require("configs.lsp").on_attach,
-				},
-				auto_attach = {
-					enabled = true,
-					filetypes = { "markdown" },
-				},
-			},
-		},
+		opts = configs.zk_nvim,
 		config = function(_, opts)
 			require("zk").setup(opts)
 			vim.cmd([[set backupcopy=yes]])
 		end,
-		keys = require("mappings.zk-nvim"),
+		keys = mappings.zk_nvim,
 	},
 
 	{
@@ -111,7 +57,7 @@ local plugins = {
 	{
 		"iurimateus/luasnip-latex-snippets.nvim",
 		dependencies = { "L3MON4D3/LuaSnip", "nvim-treesitter/nvim-treesitter" },
-		opts = { use_treesitter = true },
+		opts = configs.latex_snippets,
 		config = function(_, opts)
 			require("luasnip-latex-snippets").setup(opts)
 			require("luasnip").config.setup({ enable_autosnippets = true })
@@ -123,37 +69,10 @@ local plugins = {
 		"HakonHarnes/img-clip.nvim",
 		cmd = "PasteImage",
 		dependencies = {
-			{
-				"kirasok/telescope-media-files.nvim",
-				dependencies = {
-					"nvim-telescope/telescope.nvim",
-				},
-				opts = {
-					filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "mp4", "mkv", "svg" },
-				},
-				config = function(_, opts)
-					require("telescope").load_extension("media_files")
-					require("telescope").setup({
-						extensions = {
-							media_files = opts,
-						},
-					})
-				end,
-			},
+			{ "kirasok/telescope-media-files.nvim" },
 		},
-		opts = {
-			default = {
-				dir_path = "static",
-				use_absolute_path = true,
-				insert_mode_after_paste = false,
-			},
-			filetypes = {
-				markdown = {
-					template = "![$FILE_NAME_NO_EXT]($FILE_PATH)$CURSOR",
-				},
-			},
-		},
-		keys = require("mappings.img-clip-nvim"),
+		opts = configs.img_clip,
+		keys = mappings.img_clip,
 	},
 }
 
