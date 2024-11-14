@@ -1,4 +1,40 @@
-return {
+M = {}
+
+local previewers = require("telescope.previewers")
+local builtin = require("telescope.builtin")
+local git_diff = previewers.new_termopen_previewer({
+	get_command = function(entry)
+		return {
+			"git",
+			"diff",
+			entry.value .. "^!",
+			"--",
+			entry.current_file,
+		}
+	end,
+})
+local previewer = {
+	git_diff,
+	previewers.git_commit_message.new({}),
+	previewers.git_commit_diff_as_was.new({}),
+}
+
+local git_bcommits = function(opts)
+	opts = opts or {}
+	opts.previewer = previewer
+	builtin.git_bcommits(opts)
+end
+
+local git_commits = function(opts)
+	opts = opts or {}
+	opts.previewer = previewer
+	builtin.git_commits(opts)
+end
+
+---@type LazyKeymaps[]
+M.diffview = {
+	{ "<leader>gb", git_bcommits, desc = "File history" },
+	{ "<leader>gc", git_commits, desc = "Checkout commit" },
 	{
 		"<leader>gd",
 		function()
@@ -18,7 +54,7 @@ return {
 		function()
 			local actions = require("telescope.actions")
 			local action_state = require("telescope.actions.state")
-			require("mappings.telescope").git_commits({
+			git_commits({
 				attach_mappings = function(prompt_bufnr, _)
 					actions.select_default:replace(function()
 						local selection = action_state.get_selected_entry()
@@ -47,3 +83,10 @@ return {
 		desc = "History diff",
 	},
 }
+
+---@type LazyKeymaps[]
+M.neogit = {
+	{ "<leader>go", "<cmd>Neogit<cr>", desc = "Neogit" },
+}
+
+return M

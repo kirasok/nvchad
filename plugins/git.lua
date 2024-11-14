@@ -1,3 +1,5 @@
+local configs = require("configs.git")
+local mappings = require("mappings.git")
 ---@type NvPluginSpec[]
 local plugins = {
 
@@ -5,37 +7,23 @@ local plugins = {
 		-- know whom to blame for this code
 		"f-person/git-blame.nvim",
 		event = "BufRead",
-		opts = {
-			message_template = "<summary> • <date> • <author>",
-			date_format = "%r",
-		},
-		config = function(_, opts)
-			require("gitblame").setup(opts)
-			vim.cmd("highlight default link gitblame SpecialComment")
+		config = function(_, _)
+			require("gitblame").setup(configs.git_blame())
 		end,
 	},
 
 	{
 		"sindrets/diffview.nvim",
 		cmd = { "DiffviewFileHistory", "DiffviewOpen" },
-		keys = require("mappings.diffview-nvim"),
-		opts = {
-			default_args = {
-				DiffviewOpen = { "--imply-local" },
-			},
-		},
+		keys = mappings.diffview,
+		opts = configs.diffview,
 	},
 
 	{
 		"NeogitOrg/neogit",
 		cmd = { "Neogit" },
-		keys = require("mappings.neogit"),
-		opts = {
-			integrations = {
-				telescope = true,
-				diffview = true,
-			},
-		},
+		keys = mappings.neogit,
+		opts = configs.neogit,
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
 			"sindrets/diffview.nvim", -- optional - Diff integration
