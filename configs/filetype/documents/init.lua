@@ -34,7 +34,7 @@ M.render_markdown = function()
 	opts.append_change_events = { "DiagnosticChanged" }
 	opts.link.wiki.enabled = false
 	opts.custom_handlers = {
-		markdown_inline = require("configs.documents.markdown_inline"),
+		markdown_inline = require("configs.filetype.documents.markdown_inline"),
 	}
 	local base30 = require("base46").get_theme_tb("base_30")
 	vim.api.nvim_set_hl(0, "@markup.heading.1", { fg = base30.red, bg = "", bold = true })

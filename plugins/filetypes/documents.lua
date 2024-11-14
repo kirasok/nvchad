@@ -1,5 +1,5 @@
-local configs = require("configs.documents")
-local mappings = require("mappings.documents")
+local configs = require("configs.filetype.documents")
+local mappings = require("mappings.filetypes.documents")
 ---@type NvPluginSpec[]
 local plugins = {
 
