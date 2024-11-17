@@ -87,4 +87,15 @@ return {
 		"godlygeek/tabular",
 		cmd = "Tabularize",
 	},
+
+	{
+		"chrishrb/gx.nvim",
+		keys = mappings.gx,
+		cmd = { "Browse" },
+		init = function()
+			vim.g.netrw_nogx = 1 -- disable netrw gx
+		end,
+		submodules = false, -- not needed, submodules are required only for tests
+		config = configs.gx,
+	},
 }
