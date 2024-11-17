@@ -14,6 +14,12 @@ vim.opt.spell = true
 vim.opt.spelllang = { "en", "ru" }
 vim.opt.scrolloff = 3
 
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "both"
+local base30 = require("base46").get_theme_tb("base_30")
+vim.api.nvim_set_hl(0, "CursorLine", { bg = base30.black2 })
+vim.api.nvim_set_hl(0, "CursorLineNr", { link = "CursorLine" })
+
 vim.g.editorconfig = true
 
 vim.cmd([[au FileType markdown match WildMenu /\s\{2,\}$/]]) -- at least 2 trailing spaces
