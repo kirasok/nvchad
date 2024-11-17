@@ -82,4 +82,38 @@ M.img_clip = {
 
 M.latex_snippets = { use_treesitter = true }
 
+M.jupytext = {
+	custom_language_formatting = {
+		python = {
+			extension = "qmd",
+			style = "quarto",
+			force_ft = "quarto",
+		},
+		r = {
+			extension = "qmd",
+			style = "quarto",
+			force_ft = "quarto",
+		},
+	},
+}
+
+function M.molten()
+	vim.g.molten_image_provider = "image.nvim"
+	vim.g.molten_copy_output = true
+	vim.g.molten_output_win_max_height = 20
+	vim.g.molten_auto_open_output = true
+	vim.g.molten_wrap_output = true
+	vim.g.molten_virt_text_output = true
+	vim.g.molten_virt_lines_off_by_1 = true
+end
+
+function M.quarto(_, _)
+	require("quarto").setup({
+		codeRunner = {
+			enabled = true,
+			default_method = "molten",
+		},
+	})
+end
+
 return M
