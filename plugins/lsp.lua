@@ -69,6 +69,15 @@ local plugins = {
 		event = "LspAttach",
 		config = config.symbols,
 	},
+
+	{
+		"jmbuhr/otter.nvim",
+		dev = false,
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
 
 return plugins

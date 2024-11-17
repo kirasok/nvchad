@@ -76,6 +76,53 @@ local plugins = {
 		opts = configs.img_clip,
 		keys = mappings.img_clip,
 	},
+
+	{
+		"quarto-dev/quarto-nvim",
+		ft = { "quarto" },
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"3rd/image.nvim",
+			"jmbuhr/otter.nvim",
+			{ -- directly open ipynb files as quarto docuements
+				-- and convert back behind the scenes
+				"GCBallesteros/jupytext.nvim",
+				opts = {
+					custom_language_formatting = {
+						python = {
+							extension = "qmd",
+							style = "quarto",
+							force_ft = "quarto",
+						},
+						r = {
+							extension = "qmd",
+							style = "quarto",
+							force_ft = "quarto",
+						},
+					},
+				},
+			},
+			{
+				"benlubas/molten-nvim",
+				build = ":UpdateRemotePlugins",
+				init = function()
+					vim.g.molten_image_provider = "image.nvim"
+					vim.g.molten_output_win_max_height = 20
+					vim.g.molten_auto_open_output = false
+				end,
+				keys = {
+					{ "<leader>mi", ":MoltenInit<cr>", desc = "[m]olten [i]nit" },
+					{
+						"<leader>mv",
+						":<C-u>MoltenEvaluateVisual<cr>",
+						mode = "v",
+						desc = "molten eval visual",
+					},
+					{ "<leader>mr", ":MoltenReevaluateCell<cr>", desc = "molten re-eval cell" },
+				},
+			},
+		},
+	},
 }
 
 return plugins
