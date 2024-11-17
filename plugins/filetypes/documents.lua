@@ -12,6 +12,7 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 			"zk-org/zk-nvim",
 			"jbyuki/nabla.nvim",
+			"3rd/image.nvim",
 		},
 		config = function(_, opts)
 			require("render-markdown").setup(configs.render_markdown())
@@ -56,6 +57,7 @@ local plugins = {
 
 	{
 		"iurimateus/luasnip-latex-snippets.nvim",
+		enabled = false,
 		dependencies = { "L3MON4D3/LuaSnip", "nvim-treesitter/nvim-treesitter" },
 		opts = configs.latex_snippets,
 		config = function(_, opts)

@@ -69,4 +69,14 @@ M.zen = {
 	},
 }
 
+M.image = {
+	integrations = {
+		markdown = {
+			enabled = true,
+			download_remote_images = false,
+			filetypes = { "markdown", "vimwiki", "quarto" },
+		},
+	},
+}
+
 return M

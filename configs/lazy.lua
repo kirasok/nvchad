@@ -43,4 +43,7 @@ return {
 			},
 		},
 	},
+	rocks = {
+		hererocks = true,
+	},
 }

@@ -77,4 +77,9 @@ return {
 		config = true,
 		keys = mappings.undotree,
 	},
+
+	{
+		"3rd/image.nvim",
+		opts = configs.image,
+	},
 }

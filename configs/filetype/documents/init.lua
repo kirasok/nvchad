@@ -1,6 +1,6 @@
 local M = {}
 
-M.render_markdown = function()
+function M.render_markdown()
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
 	local opts = {
