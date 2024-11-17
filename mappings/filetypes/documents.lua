@@ -181,4 +181,20 @@ M.img_clip = {
 	},
 }
 
+function M.quarto()
+	require("which-key").add({ "<leader>r", "runner" })
+	local map = vim.keymap.set
+	local runner = require("quarto.runner")
+	map("n", "<leader>rI", ":MoltenInit<CR>", { desc = "Init kernel" })
+	map("n", "<leader>ro", ":noautocmd MoltenEnterOutput<CR>", { desc = "open output", silent = true })
+	map("n", "<leader>rO", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
+	map("n", "<leader>ri", ":MoltenImagePopup<CR>", { desc = "open image", silent = true })
+
+	map("n", "<leader>rc", runner.run_cell, { desc = "run cell", silent = true })
+	map("n", "<leader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+	map("n", "<leader>rA", runner.run_all, { desc = "run all cells", silent = true })
+	map("n", "<leader>rl", runner.run_line, { desc = "run line", silent = true })
+	map("v", "<leader>r", runner.run_range, { desc = "run visual range", silent = true })
+end
+
 return M

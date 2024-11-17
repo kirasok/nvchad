@@ -114,6 +114,7 @@ function M.quarto(_, _)
 			default_method = "molten",
 		},
 	})
+	require("mappings.filetypes.documents").quarto()
 end
 
 return M
