@@ -98,4 +98,11 @@ return {
 		submodules = false, -- not needed, submodules are required only for tests
 		config = configs.gx,
 	},
+
+	{
+		"danymat/neogen",
+		cmd = "Neogen",
+		config = configs.neogen,
+		keys = mappings.neogen,
+	},
 }
