@@ -108,4 +108,15 @@ M.trouble = {
 	},
 }
 
+---@type LazyKeymaps[]
+M.projcetions = {
+	{
+		"<leader>fs",
+		function()
+			vim.cmd("Telescope projections")
+		end,
+		desc = "projects",
+	},
+}
+
 return M

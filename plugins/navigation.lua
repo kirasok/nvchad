@@ -49,4 +49,12 @@ return {
 		cmd = "Trouble",
 		keys = mappings.trouble,
 	},
+
+	{ -- manage projects
+		"gnikdroy/projections.nvim",
+		event = "VimEnter",
+		branch = "pre_release",
+		keys = mappings.projcetions,
+		config = configs.projections,
+	},
 }
