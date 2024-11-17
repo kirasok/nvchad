@@ -101,9 +101,18 @@ vim.api.nvim_create_user_command("LspCapabilities", function()
 	end
 end, {})
 
-M.on_attach = function(client, bufnr)
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+	callback = function(event)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client ~= nil then
+			require("mappings.lspconfig").setup(client.server_capabilities)
+		end
+	end,
+})
+
+function M.on_attach(client, bufnr)
 	-- nvchad_on_attach(client, bufnr) -- don't use, it just setups useless keymaps
-	require("mappings.lspconfig").setup(client.server_capabilities)
 	client.server_capabilities.documentFormattingProvider = true
 	client.server_capabilities.documentRangeFormattingProvider = true
 	if client.server_capabilities.inlayHintProvider then
