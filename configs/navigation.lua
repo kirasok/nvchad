@@ -2,6 +2,7 @@ local M = {}
 
 ---@type Flash.Config
 M.flash = {
+	jump = { nohlsearch = false },
 	label = { rainbow = { enable = true } },
 	modes = { char = { enabled = true } },
 }
