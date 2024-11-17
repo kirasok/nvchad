@@ -15,6 +15,7 @@ M.diffview = {
 }
 
 M.neogit = {
+	graph_style = "kitty",
 	integrations = {
 		telescope = true,
 		diffview = true,
