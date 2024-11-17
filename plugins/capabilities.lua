@@ -82,4 +82,9 @@ return {
 		"3rd/image.nvim",
 		opts = configs.image,
 	},
+
+	{
+		"godlygeek/tabular",
+		cmd = "Tabularize",
+	},
 }
