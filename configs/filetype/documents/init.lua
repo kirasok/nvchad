@@ -22,6 +22,17 @@ function M.render_markdown()
 			hyperlink = "",
 			wiki = { icon = "" },
 		},
+		checkbox = {
+			custom = {
+				todo = { raw = "[-]", rendered = "󰄱 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
+				strike = {
+					raw = "[~]",
+					rendered = "󰅘 ",
+					highlight = "@markup.strikethrough",
+					scope_highlight = "@markup.strikethrough",
+				},
+			},
+		},
 		win_options = { conceallevel = { rendered = 2 } },
 		on = {
 			attach = function()
