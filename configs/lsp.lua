@@ -34,7 +34,23 @@ M.servers = {
 	ts_ls = {},
 	nil_ls = {},
 	lemminx = {},
-	pylsp = {},
+	pylsp = {
+		settings = {
+			pylsp = {
+				plugins = {
+					pylsp_mypy = {
+						enabled = true,
+						live_mode = true,
+						strict = true,
+					},
+					rope = { enabled = true },
+					pydocstyle = {
+						enabled = true,
+					},
+				},
+			},
+		},
+	},
 	gopls = {
 		settings = {
 			gopls = {
