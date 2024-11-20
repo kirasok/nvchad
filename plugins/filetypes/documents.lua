@@ -11,7 +11,6 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 			"zk-org/zk-nvim",
-			"jbyuki/nabla.nvim",
 			"3rd/image.nvim",
 		},
 		config = function(_, _)
@@ -95,6 +94,12 @@ local plugins = {
 			},
 		},
 		config = configs.quarto,
+	},
+
+	{
+		"kirasok/latexrenderer",
+		ft = "markdown",
+		config = true,
 	},
 }
 

@@ -34,11 +34,6 @@ function M.render_markdown()
 			},
 		},
 		win_options = { conceallevel = { rendered = 2 } },
-		on = {
-			attach = function()
-				require("nabla").enable_virt({ autogen = true })
-			end,
-		},
 	}
 
 	--- WARN: options from my fork
