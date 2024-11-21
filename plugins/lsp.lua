@@ -24,12 +24,6 @@ local plugins = {
 				opts = config.confrom,
 				config = true,
 			},
-			{
-				"aznhe21/actions-preview.nvim",
-				dependencies = { "nvim-telescope/telescope.nvim" },
-				config = config.action_preview,
-			},
-			{ "folke/trouble.nvim" },
 		},
 		event = "User FilePost",
 		config = function()
@@ -77,6 +71,13 @@ local plugins = {
 			"neovim/nvim-lspconfig",
 			"nvim-treesitter/nvim-treesitter",
 		},
+	},
+
+	{
+		"aznhe21/actions-preview.nvim",
+		event = "LspAttach",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = config.action_preview,
 	},
 }
 

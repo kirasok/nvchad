@@ -17,21 +17,30 @@ local git_diff = previewers.new_termopen_previewer({
 		}
 	end,
 })
+
 local previewer = {
 	git_diff,
 	previewers.git_commit_message.new({}),
 	previewers.git_commit_diff_as_was.new({}),
 }
 
-local git_bcommits = function(opts)
+local git_command = {
+	"git",
+	"log",
+	"--pretty=%h %>(14,trunc)%ad %s", -- <abbr_commti> <date> <message>
+}
+
+local function git_bcommits(opts)
 	opts = opts or {}
 	opts.previewer = previewer
+	opts.git_command = git_command
 	builtin.git_bcommits(opts)
 end
 
-local git_commits = function(opts)
+local function git_commits(opts)
 	opts = opts or {}
 	opts.previewer = previewer
+	opts.git_command = git_command
 	builtin.git_commits(opts)
 end
 
