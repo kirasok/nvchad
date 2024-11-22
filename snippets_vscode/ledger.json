@@ -1,1 +1,62 @@
-{"purshare2":{"prefix":"purshare","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}","  ${5:account}  ${6:value}","  assets:bank:mas","","$0"]},"milk":{"prefix":"milk","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} milk","  expenses:food  82 RUB","  assets:bank:mas","","$0"]},"bc-mir":{"prefix":"bc-mir","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} from mas to mir","  assets:bank:mas","  assets:bank:mir  ${4:value}","","$0"]},"entry":{"prefix":"entry","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}","  ${5:account}  ${6:value}","  ${7:account}","","$0"]},"bc-mas":{"prefix":"bc-mas","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} from mir to mas","  assets:bank:mas","  assets:bank:mir  ${4:value}","","$0"]},"rev-passive":{"prefix":"rev-passive","body":["${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}","  revenue:passive:${5:account}","  ${6:account}  ${7:value}","","$0"]}}
+{
+  "purshare2": {
+    "prefix": "purshare",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}",
+      "  ${5:account}  ${6:value}",
+      "  assets:bank:mas",
+      "",
+      "$0"
+    ]
+  },
+  "milk": {
+    "prefix": "milk",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} milk",
+      "  expenses:food  84 RUB",
+      "  assets:bank:mas",
+      "",
+      "$0"
+    ]
+  },
+  "bc-mir": {
+    "prefix": "bc-mir",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} from mas to mir",
+      "  assets:bank:mas",
+      "  assets:bank:mir  ${4:value}",
+      "",
+      "$0"
+    ]
+  },
+  "entry": {
+    "prefix": "entry",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}",
+      "  ${5:account}  ${6:value}",
+      "  ${7:account}",
+      "",
+      "$0"
+    ]
+  },
+  "bc-mas": {
+    "prefix": "bc-mas",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} from mir to mas",
+      "  assets:bank:mas",
+      "  assets:bank:mir  ${4:value}",
+      "",
+      "$0"
+    ]
+  },
+  "rev-passive": {
+    "prefix": "rev-passive",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:transaction}",
+      "  revenue:passive:${5:account}",
+      "  ${6:account}  ${7:value}",
+      "",
+      "$0"
+    ]
+  }
+}
