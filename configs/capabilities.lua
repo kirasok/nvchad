@@ -87,6 +87,8 @@ M.image = {
 function M.gx()
 	require("gx").setup({
 		handlers = {
+			commit = true,
+			markdown = true,
 			plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
 			github = true, -- open github issues
 			brewfile = true, -- open Homebrew formulaes and casks
