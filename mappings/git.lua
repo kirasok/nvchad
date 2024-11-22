@@ -102,4 +102,9 @@ M.neogit = {
 	{ "<leader>go", "<cmd>Neogit<cr>", desc = "Neogit" },
 }
 
+---@type LazyKeymaps[]
+M.blame = {
+	{ "<leader>gB", "<cmd>BlameToggle<cr>", desc = "Blame" },
+}
+
 return M

@@ -14,4 +14,10 @@ M.neogit = {
 	},
 }
 
+M.blame = {
+	focus_blame = true,
+	merge_consecutive = true,
+	max_summary_width = 30,
+}
+
 return M

@@ -22,5 +22,12 @@ local plugins = {
 		},
 		config = true,
 	},
+
+	{
+		"FabijanZulj/blame.nvim",
+		opts = configs.blame,
+		keys = mappings.blame,
+		config = true,
+	},
 }
 return plugins
