@@ -53,7 +53,20 @@ M.servers = {
 	gopls = {
 		settings = {
 			gopls = {
+				analyses = {
+					unusedparams = true,
+				},
+				staticcheck = true,
 				gofumpt = true,
+				semanticTokens = true,
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
 			},
 		},
 	},
@@ -84,7 +97,7 @@ M.servers = {
 					enable = true,
 				},
 				hint = {
-					enable = true
+					enable = true,
 				},
 				completion = {
 					callSnippet = "Replace",
