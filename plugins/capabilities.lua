@@ -89,7 +89,7 @@ return {
 	},
 
 	{
-		"chrishrb/gx.nvim",
+		"kirasok/gx.nvim",
 		keys = mappings.gx,
 		cmd = { "Browse" },
 		init = function()

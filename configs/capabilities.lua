@@ -87,8 +87,8 @@ M.image = {
 function M.gx()
 	require("gx").setup({
 		handlers = {
-			commit = true,
 			markdown = true,
+			commit = true,
 			plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
 			github = true, -- open github issues
 			brewfile = true, -- open Homebrew formulaes and casks
@@ -101,7 +101,6 @@ function M.gx()
 				filename = "Cargo.toml", -- or the necessary filename
 				handle = function(mode, line, _)
 					local crate = require("gx.helper").find(line, mode, "(%w+)%s-=%s")
-
 					if crate then
 						return "https://crates.io/crates/" .. crate
 					end
