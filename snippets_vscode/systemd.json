@@ -1,0 +1,1 @@
+{"simple service":{"body":["[Unit]","Description={$1:description}","#After=network.target","","[Service]","ExecStart=${0:executable}","","[Install]","WantedBy=default.target"],"prefix":"simple service"}}
