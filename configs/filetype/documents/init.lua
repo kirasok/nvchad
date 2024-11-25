@@ -8,6 +8,7 @@ function M.render_markdown()
 		sign = { enabled = false },
 		latex = { enabled = false },
 		indent = { enabled = true },
+		pipe_table = { enabled = true, style = "normal" },
 		heading = {
 			backgrounds = {
 				"",

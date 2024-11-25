@@ -10,7 +10,6 @@ M.linters = {
 }
 
 M.formatters = {
-	lua = { "stylua" },
 	toml = { "taplo" },
 	yaml = { "yamlfmt" },
 	sh = { "shfmt" },
@@ -80,12 +79,16 @@ M.servers = {
 	},
 	lua_ls = {
 		settings = {
-			format = {
-				enable = false,
-			},
 			Lua = {
+				format = {
+					enable = true,
+				},
+				hint = {
+					enable = true
+				},
 				completion = {
 					callSnippet = "Replace",
+					showWord = false,
 				},
 			},
 		},
