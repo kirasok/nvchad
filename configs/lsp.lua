@@ -44,7 +44,7 @@ M.servers = {
 					},
 					rope = { enabled = true },
 					pydocstyle = {
-						enabled = true,
+						enabled = false,
 					},
 				},
 			},
