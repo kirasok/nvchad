@@ -101,6 +101,14 @@ local plugins = {
 		ft = "markdown",
 		config = true,
 	},
+
+	{
+		"kirasok/markmap.nvim",
+		build = "yarn global add markmap-cli",
+		cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
+		opts = { offline = true },
+		config = true,
+	},
 }
 
 return plugins
