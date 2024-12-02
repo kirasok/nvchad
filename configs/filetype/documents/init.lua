@@ -24,11 +24,12 @@ function M.render_markdown()
 			wiki = { icon = "" },
 		},
 		checkbox = {
+			checked = { icon = "   󰱒 " },
 			custom = {
-				todo = { raw = "[-]", rendered = "󰄱 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
+				todo = { raw = "[-]", rendered = "   󰄱 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
 				strike = {
 					raw = "[~]",
-					rendered = "󰅘 ",
+					rendered = "   󰅘 ",
 					highlight = "@markup.strikethrough",
 					scope_highlight = "@markup.strikethrough",
 				},
