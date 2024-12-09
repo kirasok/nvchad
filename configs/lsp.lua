@@ -43,7 +43,11 @@ M.servers = {
 						strict = true,
 					},
 					rope = { enabled = true },
+					-- rope_autoimport = { enabled = true },
 					pydocstyle = {
+						enabled = false,
+					},
+					pycodestyle = {
 						enabled = false,
 					},
 				},
