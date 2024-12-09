@@ -23,7 +23,11 @@ function M.render_markdown()
 			hyperlink = "",
 			wiki = { icon = "" },
 		},
+		bullet = {
+			icons = { "  ● ", "  ○ ", "  ◆ ", "  ◇ " },
+		},
 		checkbox = {
+			unchecked = { icon = "  󰄱 " },
 			checked = { icon = "   󰱒 " },
 			custom = {
 				todo = { raw = "[-]", rendered = "   󰄱 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
