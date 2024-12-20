@@ -40,7 +40,7 @@ M.servers = {
 					pylsp_mypy = {
 						enabled = true,
 						live_mode = true,
-						strict = true,
+						strict = false,
 					},
 					rope = { enabled = true },
 					-- rope_autoimport = { enabled = true },
