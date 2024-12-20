@@ -27,7 +27,7 @@ function M.render_markdown()
 			icons = { "  ● ", "  ○ ", "  ◆ ", "  ◇ " },
 		},
 		checkbox = {
-			unchecked = { icon = "  󰄱 " },
+			unchecked = { icon = "   󰄱 " },
 			checked = { icon = "   󰱒 " },
 			custom = {
 				todo = { raw = "[-]", rendered = "   󰄱 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
