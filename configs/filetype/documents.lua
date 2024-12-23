@@ -4,11 +4,17 @@ function M.render_markdown()
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
 	local opts = {
-		render_modes = { "n", "c", "i" },
-		sign = { enabled = false },
-		latex = { enabled = false },
-		indent = { enabled = true },
-		pipe_table = { enabled = true, style = "normal" },
+		render_modes = { "n", "c", "t" },
+		anti_conceal = {
+			ignore = {
+				code_background = true,
+				table_border = true,
+				sign = true,
+			},
+		},
+		latex = {
+			enabled = false,
+		},
 		heading = {
 			backgrounds = {
 				"",
@@ -18,10 +24,6 @@ function M.render_markdown()
 				"",
 				"",
 			},
-		},
-		link = {
-			hyperlink = "",
-			wiki = { icon = "" },
 		},
 		bullet = {
 			icons = { "  ● ", "  ○ ", "  ◆ ", "  ◇ " },
@@ -39,15 +41,15 @@ function M.render_markdown()
 				},
 			},
 		},
-		win_options = { conceallevel = { rendered = 2 } },
+		pipe_table = { enabled = true, style = "normal" },
+		link = {
+			hyperlink = "",
+			wiki = { icon = "" },
+		},
+		indent = { enabled = true },
+		sign = { enabled = false },
 	}
 
-	--- WARN: options from my fork
-	opts.append_change_events = { "DiagnosticChanged" }
-	opts.link.wiki.enabled = false
-	opts.custom_handlers = {
-		markdown_inline = require("configs.filetype.documents.markdown_inline"),
-	}
 	local base30 = require("base46").get_theme_tb("base_30")
 	vim.api.nvim_set_hl(0, "@markup.heading.1", { fg = base30.red, bg = "", bold = true })
 	vim.api.nvim_set_hl(0, "@markup.heading.2", { fg = base30.yellow, bg = "", bold = true })
