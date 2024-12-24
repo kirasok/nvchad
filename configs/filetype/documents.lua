@@ -26,7 +26,7 @@ function M.render_markdown()
 			},
 		},
 		bullet = {
-			icons = { "  ● ", "  ○ ", "  ◆ ", "  ◇ " },
+			icons = { "   ● ", "   ○ ", "   ◆ ", "   ◇ " },
 		},
 		checkbox = {
 			unchecked = { icon = "   󰄱 " },
