@@ -12,9 +12,16 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 			"zk-org/zk-nvim",
 			"3rd/image.nvim",
+			"hrsh7th/nvim-cmp",
 		},
 		config = function(_, _)
 			require("render-markdown").setup(configs.render_markdown())
+			local cmp = require("cmp")
+			local config = cmp.get_config()
+			table.insert(config.sources, {
+				name = "render-markdown",
+			})
+			cmp.setup(config)
 		end,
 	},
 
