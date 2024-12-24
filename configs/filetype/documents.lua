@@ -4,7 +4,7 @@ function M.render_markdown()
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
 	local opts = {
-		render_modes = { "n", "c", "t" },
+		render_modes = { "n", "c", "t", "i" },
 		anti_conceal = {
 			ignore = {
 				code_background = true,
