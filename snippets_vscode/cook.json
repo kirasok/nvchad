@@ -1,0 +1,1 @@
+{"bootstrap":{"prefix":"bootstrap","body":[">>name: ${1:name}",">>source: ${2:My grandmother}",">>servings: ${3:number}",">>[auto scale]: ${4:true}"]}}
