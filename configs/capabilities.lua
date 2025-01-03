@@ -114,9 +114,11 @@ function M.gx()
 end
 
 --- Generate config for neogen
+require("which-key").add({
+	{ "<leader>a", group = "annotation" },
+})
 function M.neogen()
 	require("neogen").setup({ snippet_engine = "luasnip" })
-	require("which-key").add({ { "<leader>a", "annotation" } })
 end
 
 return M
