@@ -29,6 +29,7 @@ M.luasnip = function()
 	}
 end
 
+---@type Scissors.Config
 M.scissors = { snippetDir = vim.fn.stdpath("config") .. "/lua/snippets_vscode" }
 
 return M

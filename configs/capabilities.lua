@@ -1,5 +1,6 @@
 local M = {}
 
+---@return UfoConfig
 M.ufo = function()
 	vim.o.foldcolumn = "0" -- '0' is not bad
 	vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -58,6 +59,7 @@ function M.wilder(_, _)
 	)
 end
 
+---@type ZenOptions
 M.zen = {
 	window = {
 		width = 75,
@@ -85,7 +87,8 @@ M.image = {
 }
 
 function M.gx()
-	require("gx").setup({
+	---@type GxOptions
+	local opts = {
 		handlers = {
 			markdown = true,
 			commit = true,
@@ -110,7 +113,8 @@ function M.gx()
 		handler_options = {
 			search_engine = "google", -- you can select between google, bing, duckduckgo, ecosia and yandex
 		},
-	})
+	}
+	require("gx").setup(opts)
 end
 
 --- Generate config for neogen
@@ -118,7 +122,9 @@ require("which-key").add({
 	{ "<leader>a", group = "annotation" },
 })
 function M.neogen()
-	require("neogen").setup({ snippet_engine = "luasnip" })
+	---@type neogen.Configuration
+	local opts = { snippet_engine = "luasnip" }
+	require("neogen").setup(opts)
 end
 
 return M

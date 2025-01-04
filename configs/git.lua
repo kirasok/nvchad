@@ -1,11 +1,13 @@
 local M = {}
 
+---@type DiffviewConfig
 M.diffview = {
 	default_args = {
 		DiffviewOpen = { "--imply-local" },
 	},
 }
 
+---@type NeogitConfig
 M.neogit = {
 	graph_style = "kitty",
 	integrations = {

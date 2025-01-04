@@ -1,7 +1,7 @@
 local M = {}
 
----@type fun(_:LazyPlugin, opts:table)|true
-M.dap = function(_, opts)
+---@type fun(_:LazyPlugin, opts:dap.Configuration)|true
+function M.dap(_, opts)
 	local dap, dapui = require("dap"), require("dapui")
 	dap.listeners.before.attach.dapui_config = function()
 		dapui.open()

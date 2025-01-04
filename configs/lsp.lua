@@ -178,6 +178,7 @@ M.action_preview = function(_, _)
 	})
 end
 
+---@type conform.setupOpts
 M.confrom = {
 	formatters_by_ft = M.formatters,
 	format_on_save = {
@@ -187,6 +188,7 @@ M.confrom = {
 	},
 }
 
+---@type nvim-lightbulb.Config
 M.lightbulb = {
 	autocmd = { enabled = true },
 	sign = { enabled = false },

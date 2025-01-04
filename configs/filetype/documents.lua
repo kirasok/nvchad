@@ -60,6 +60,7 @@ function M.render_markdown()
 	return opts
 end
 
+---@type TableNvimConfig
 M.table_nvim = {
 	padd_column_separators = true, -- Insert a space around column separators.
 	mappings = { -- next and prev work in Normal and Insert mode. All other mappings work in Normal mode.

@@ -7,6 +7,7 @@ M.flash = {
 	modes = { char = { enabled = true } },
 }
 
+---@type YaziConfig
 M.yazi = {
 	open_for_directories = true,
 }
