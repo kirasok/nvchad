@@ -6,7 +6,7 @@ local plugins = {
 	{
 		"kirasok/render-markdown.nvim",
 		ft = "markdown",
-		branch = "feat_wikilinks_simple2",
+		branch = "feat_wikilink_simple2",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
