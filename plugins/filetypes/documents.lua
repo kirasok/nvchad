@@ -63,7 +63,6 @@ local plugins = {
 
 	{
 		"iurimateus/luasnip-latex-snippets.nvim",
-		enabled = false,
 		dependencies = { "L3MON4D3/LuaSnip", "nvim-treesitter/nvim-treesitter" },
 		opts = configs.latex_snippets,
 		config = function(_, opts)
