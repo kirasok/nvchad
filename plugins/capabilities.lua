@@ -80,6 +80,7 @@ return {
 
 	{
 		"3rd/image.nvim",
+		enabled = os.getenv("TERM") == "xterm-kitty",
 		opts = configs.image,
 	},
 
