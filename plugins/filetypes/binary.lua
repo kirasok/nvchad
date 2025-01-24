@@ -1,7 +1,8 @@
+local mappings = require("mappings.filetypes.binary")
 ---@type NvPluginSpec[]
 return {
 	{
 		"RaafatTurki/hex.nvim",
-		event = "BufRead",
+		keys = mappings.hex,
 	},
 }
