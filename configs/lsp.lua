@@ -315,4 +315,46 @@ M.symbols = function(_, _)
 	})
 end
 
+M.tiny_diagnostics = {
+	preset = "powerline",
+	options = {
+		-- Use icons defined in the diagnostic configuration
+		use_icons_from_diagnostic = false,
+		-- Add messages to diagnostics when multiline diagnostics are enabled
+		-- If set to false, only signs will be displayed
+		add_messages = true,
+		-- Time (in milliseconds) to throttle updates while moving the cursor
+		-- Increase this value for better performance if your computer is slow
+		-- or set to 0 for immediate updates and better visual
+		throttle = 20,
+		-- Minimum message length before wrapping to a new line
+		softwrap = 30,
+		-- Show all diagnostics under the cursor if multiple diagnostics exist on the same line
+		-- If set to false, only the diagnostics under the cursor will be displayed
+		multiple_diag_under_cursor = true,
+		multilines = {
+			-- Enable multiline diagnostic messages
+			enabled = true,
+			-- Always show messages on all lines for multiline diagnostics
+			always_show = true,
+		},
+		-- Display all diagnostic messages on the cursor line
+		show_all_diags_on_cursorline = true,
+		-- Enable diagnostics in Insert mode
+		-- If enabled, it is better to set the `throttle` option to 0 to avoid visual artifacts
+		enable_on_insert = false,
+		-- Enable diagnostics in Select mode (e.g when auto inserting with Blink)
+		enable_on_select = false,
+		overflow = {
+			-- Manage how diagnostic messages handle overflow
+			-- Options:
+			-- "wrap" - Split long messages into multiple lines
+			-- "none" - Do not truncate messages
+			-- "oneline" - Keep the message on a single line, even if it's long
+			mode = "wrap",
+		},
+	},
+	disabled_ft = { "markdown" }, -- List of filetypes to disable the plugin
+}
+
 return M

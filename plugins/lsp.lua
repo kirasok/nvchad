@@ -79,6 +79,16 @@ local plugins = {
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		config = config.action_preview,
 	},
+
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		priority = 1000, -- needs to be loaded in first
+		config = function()
+			require("tiny-inline-diagnostic").setup(config.tiny_diagnostics)
+			vim.diagnostic.config({ virtual_text = false })
+		end,
+	},
 }
 
 return plugins
