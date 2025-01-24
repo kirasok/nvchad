@@ -6,6 +6,8 @@ local plugins = {
 		enabled = false,
 	},
 
+	{ "hrsh7th/cmp-nvim-lua", enabled = false },
+
 	{
 		"rafamadriz/friendly-snippets",
 		enabled = false,
