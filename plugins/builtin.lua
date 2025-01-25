@@ -2,8 +2,16 @@
 local plugins = {
 
 	{
-		"hrsh7th/cmp-buffer",
-		enabled = false,
+		"hrsh7th/nvim-cmp",
+		opts = function()
+			local opts = require("nvchad.configs.cmp")
+			opts.sources = {
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{ name = "path" },
+			}
+			return opts
+		end,
 	},
 
 	{ "hrsh7th/cmp-nvim-lua", enabled = false },

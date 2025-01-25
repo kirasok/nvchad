@@ -46,17 +46,29 @@ M.yanky = {
 	},
 }
 
-function M.wilder(_, _)
-	local wilder = require("wilder")
-	wilder.setup({ modes = { ":", "/", "?" } })
-	wilder.set_option(
-		"renderer",
-		wilder.popupmenu_renderer({
-			highlighter = wilder.basic_highlighter(),
-			left = { " ", wilder.popupmenu_devicons() },
-			right = { " ", wilder.popupmenu_scrollbar() },
-		})
-	)
+function M.cmdline()
+	local cmp = require("cmp")
+	-- `/` cmdline setup.
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+	-- `:` cmdline setup.
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{
+				name = "cmdline",
+				option = {
+					ignore_cmds = { "Man", "!" },
+				},
+			},
+		}),
+	})
 end
 
 ---@type ZenOptions

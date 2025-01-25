@@ -58,10 +58,10 @@ return {
 	},
 
 	{
-		"gelguy/wilder.nvim",
+		"hrsh7th/cmp-cmdline",
+		dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-buffer" },
 		event = "CmdlineEnter",
-		build = ":UpdateRemotePlugins",
-		config = configs.wilder,
+		config = configs.cmdline,
 	},
 
 	{
