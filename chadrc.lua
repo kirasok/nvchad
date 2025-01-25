@@ -11,7 +11,6 @@ local options = {
 		theme = "rosepine",
 		theme_toggle = { "rosepine", "ayu_light" },
 	},
-
 	ui = {
 		cmp = {
 			style = "atom", -- default/flat_light/flat_dark/atom/atom_colored

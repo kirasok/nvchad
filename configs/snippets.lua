@@ -1,14 +1,19 @@
 local M = {}
 
+local config_path = vim.fn.stdpath("config")
+local snippets_vscode = config_path .. "/lua/snippets_vscode"
+local snippets_snipmate = config_path .. "/lua/snippets_snipmate"
+local snippets_lua = config_path .. "/lua/snippets_lua"
+
 M.luasnip = function()
 	require("luasnip.loaders.from_vscode").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_vscode" },
+		paths = { snippets_vscode },
 	})
 	require("luasnip.loaders.from_snipmate").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_snipmate" },
+		paths = { snippets_snipmate },
 	})
 	require("luasnip.loaders.from_lua").lazy_load({
-		paths = { vim.fn.stdpath("config") .. "/lua/snippets_lua" },
+		paths = { snippets_lua },
 	})
 
 	-- highlight luasnip nodes
@@ -30,6 +35,6 @@ M.luasnip = function()
 end
 
 ---@type Scissors.Config
-M.scissors = { snippetDir = vim.fn.stdpath("config") .. "/lua/snippets_vscode" }
+M.scissors = { snippetDir = snippets_vscode }
 
 return M
