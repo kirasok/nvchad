@@ -139,4 +139,8 @@ function M.neogen()
 	require("neogen").setup(opts)
 end
 
+M.autosave = {
+	noautocmd = true, -- do not execute autocmds when saving
+}
+
 return M

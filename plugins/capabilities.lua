@@ -113,4 +113,12 @@ return {
 		event = "VeryLazy",
 		config = true,
 	},
+
+	{
+		"okuuva/auto-save.nvim",
+		commit = "29f793a",
+		cmd = "ASToggle",
+		event = { "InsertLeave", "TextChanged" },
+		opts = configs.autosave,
+	},
 }
