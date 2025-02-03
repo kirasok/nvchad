@@ -15,7 +15,7 @@ M.formatters = {
 	sh = { "shfmt" },
 	zsh = { "shfmt" },
 	nix = { "nixfmt" },
-	markdown = { "prettierd", "prettier", stop_after_first = true },
+	markdown = { 'markdownlint-cli2' },
 	-- Use a sub-list to run only the first available formatter
 	javascript = { "prettierd", "prettier", stop_after_first = true },
 }
